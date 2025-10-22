@@ -31,6 +31,43 @@
             border-color: #EF4444; 
             box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 24px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -99,32 +136,79 @@
         <!-- 料金表 -->
         <section id="price" class="mb-20">
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">料金体系</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- 基本価格カード -->
-                <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-indigo-500">
-                    <h3 class="text-2xl font-bold mb-4">基本スタジオ利用料 (税込)</h3>
-                    <p class="text-4xl font-black text-indigo-600 mb-2">¥15,620 <span class="text-lg font-normal text-gray-500">/時間</span></p>
-                    <p class="text-sm text-gray-500 mb-4">※ 3時間より承ります。</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>メインスタジオ＋サブコントロールルーム利用</li>
-                        <li>機材一式レンタル（下記機材リスト参照）</li>
-                        <li>**セッティングサポート**（機材の展開・撤収補助）</li>
-                        <li>有線インカム 4ch 使用可能</li>
+
+            <!-- New 2-column layout for Base vs Options -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+
+                <!-- 基本プランカード -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-t-8 border-indigo-500 flex flex-col">
+                    <h3 class="text-3xl font-bold mb-2 text-center">基本プラン</h3>
+                    <p class="text-center text-gray-500 mb-6">スタジオ利用に必要な全てが含まれます</p>
+                    <div class="text-center mb-6">
+                        <p class="text-4xl font-black text-indigo-600">¥15,620 <span class="text-lg font-normal text-gray-500">/時間 (税込)</span></p>
+                        <p class="text-sm text-gray-500">※ 3時間より承ります。</p>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3 text-gray-800">基本プランに含まれる内容:</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 flex-grow">
+                        <li><strong>スタジオ利用:</strong> メインスタジオ＋サブコントロールルーム</li>
+                        <li><strong>標準機材一式:</strong>
+                            <ul class="list-['-_'] list-inside ml-4 text-sm">
+                                <li>業務用カメラ x2 (固定)</li>
+                                <li>マイク (ガンマイク x2, ワイヤレス x2)</li>
+                                <li>照明機材 (LED・白熱灯)</li>
+                                <li>スイッチャー・配信エンコーダ</li>
+                                <li>その他、下記「機材・設備リスト」記載の標準機材</li>
+                            </ul>
+                        </li>
+                        <li><strong>セッティングサポート:</strong> 機材のセッティング・撤収補助</li>
+                        <li><strong>有線インカム:</strong> 4chまで利用可能</li>
                     </ul>
+                    <p class="mt-6 text-xs text-center text-gray-500 bg-gray-100 p-2 rounded">※ オペレーター人件費は含まれません。お客様ご自身での操作が基本となります。</p>
                 </div>
+
+                <!-- オプションサービスカード -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-t-8 border-blue-500 flex flex-col">
+                    <h3 class="text-3xl font-bold mb-2 text-center">オプションサービス</h3>
+                    <p class="text-center text-gray-500 mb-6">配信のクオリティ向上や特殊対応に</p>
+
+                    <div class="space-y-4 text-gray-700">
+                        <div>
+                            <p class="font-bold">TD人件費 <span class="text-base font-normal text-gray-500">（技術ディレクター）</span></p>
+                            <p class="text-lg">¥11,000 / 時間</p>
+                            <p class="text-sm text-gray-500">※ 高度なスイッチングや配信管理を行います。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">カメラ人件費 <span class="text-base font-normal text-gray-500">（カメラワーク担当）</span></p>
+                            <p class="text-lg">¥8,800 / 時間</p>
+                            <p class="text-sm text-gray-500">※ 演者に合わせたカメラワークが必要な場合は必須です。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">カメラ台数追加 <span class="text-base font-normal text-gray-500">（レンタル）</span></p>
+                            <p class="text-lg">¥11,000 / 台</p>
+                        </div>
+                        <div><p class="font-bold">縦動画対応設定</p><p class="text-lg">¥11,000 / 一回</p></div>
+                        <div><p class="font-bold">主要機器バックアップ電源</p><p class="text-lg">¥5,500 / 一回</p></div>
+                        <div><p class="font-bold">バックアップ回線（4G/5G）</p><p class="text-lg">¥3,300 / 一回</p></div>
+                        <div><p class="font-bold">印刷（カラー/モノクロ）</p><p class="text-lg">¥33 / ¥11 / 枚</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 割引・割増規定 (Moved below) -->
+            <div class="grid md:grid-cols-2 gap-8">
                 <!-- 割引・割増カード -->
                 <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500">
-                    <h3 class="text-2xl font-bold mb-4">割増・割引規定</h3>
+                    <h3 class="text-2xl font-bold mb-4">割増規定</h3>
                     <ul class="space-y-4">
                         <li>
                             <p class="font-bold text-gray-700">長時間割増（8時間超過）</p>
                             <p class="text-xl text-yellow-600 font-bold">+ 10%</p>
-                            <p class="text-sm text-gray-500">※ 基本料金・時間オプションに自動適用</p>
+                            <p class="text-sm text-gray-500">※ 基本料金・時間単位オプションに自動適用</p>
                         </li>
                         <li>
                             <p class="font-bold text-gray-700">深夜割増（22:00〜翌7:00）</p>
                             <p class="text-xl text-yellow-600 font-bold">+ 30%</p>
-                            <p class="text-sm text-gray-500">※ 基本料金・時間オプションに適用。スタッフ交通費実費追加。</p>
+                            <p class="text-sm text-gray-500">※ スタッフ交通費実費が別途必要です。</p>
                         </li>
                     </ul>
                 </div>
@@ -135,46 +219,19 @@
                         <li>
                             <p class="font-bold text-gray-700">ベータ版期間割引</p>
                             <p class="text-xl text-green-600 font-bold">20% OFF</p>
-                            <p class="text-sm text-gray-500">※ 現在強制適用されています。</p>
+                            <p class="text-sm text-gray-500">※ 現在、全てのご利用に自動適用されます。</p>
                         </li>
                         <li>
                             <p class="font-bold text-gray-700">学生割引</p>
                             <p class="text-xl text-green-600 font-bold">20% OFF</p>
-                            <p class="text-sm text-gray-500">※ 学生アドレスでのやり取りが必須。</p>
+                            <p class="text-sm text-gray-500">※ 学生アドレスでのやり取りが必須です。</p>
                         </li>
                         <li>
                             <p class="font-bold text-gray-700">動画代理販売割引</p>
                             <p class="text-xl text-green-600 font-bold">10% OFF</p>
-                            <p class="text-sm text-gray-500">※ 弊社での動画代理販売（編集なし）を条件とします。</p>
+                            <p class="text-sm text-gray-500">※ 弊社での動画代理販売（編集なし）が条件です。</p>
                         </li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- オプションリスト -->
-            <div class="bg-white rounded-xl shadow-xl p-8 mt-12">
-                <h3 class="text-2xl font-bold mb-4 text-blue-600">オプションサービス (全て税込)</h3>
-                <div class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-gray-700">
-                    <div>
-                        <p class="font-bold">TD人件費 <span class="text-base font-normal text-gray-500">（技術ディレクター）</span></p>
-                        <p class="text-lg">¥11,000 / 時間</p>
-                        <p class="text-sm text-gray-500">※ カメラマン不在時は固定カメラでの運用が基本となります。</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">カメラ人件費 <span class="text-base font-normal text-gray-500">（カメラワーク担当）</span></p>
-                        <p class="text-lg">¥8,800 / 時間</p>
-                        <p class="text-sm text-gray-500">※ カメラワークが必要な場合は必須となります。</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">カメラ台数追加 <span class="text-base font-normal text-gray-500">（レンタル）</span></p>
-                        <p class="text-lg">¥11,000 / 台</p>
-                        <p class="text-sm text-gray-500">※ 収録品質に応じたカメラをご用意します。</p>
-                    </div>
-                    <div><p class="font-bold">縦動画対応設定</p><p class="text-lg">¥11,000 / 一回</p></div>
-                    <div><p class="font-bold">主要機器バックアップ電源（モバイル電源）</p><p class="text-lg">¥5,500 / 一回</p></div>
-                    <div><p class="font-bold">バックアップ回線（4G/5Gテザリング）</p><p class="text-lg">¥3,300 / 一回</p></div>
-                    <div><p class="font-bold">印刷（カラー）</p><p class="text-lg">¥33 / 枚</p></div>
-                    <div><p class="font-bold">印刷（モノクロ）</p><p class="text-lg">¥11 / 枚</p></div>
                 </div>
             </div>
         </section>
@@ -752,6 +809,24 @@
             return activities.join(', ');
         }
         
+        function openModal() {
+            document.getElementById('emailModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('emailModal').style.display = 'none';
+            document.getElementById('copy-success').style.display = 'none'; // Hide success message on close
+        }
+
+        function copyEmailBody() {
+            const emailBody = document.getElementById('emailBody');
+            emailBody.select();
+            document.execCommand('copy');
+
+            const copySuccess = document.getElementById('copy-success');
+            copySuccess.style.display = 'block';
+        }
+
         function sendQuoteEmail() {
             const totalHours = parseFloat(document.getElementById('hours').value) || 0;
             const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
@@ -774,13 +849,11 @@
             const endDate = document.getElementById('endDate').value;
             const endTime = document.getElementById('endTime').value;
             const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
-
             const totalAmount = document.getElementById('totalAmount').textContent;
             
             const subject = '【UrbanicStudio/WEB概算見積】 (' + totalAmount + ')';
             
-            // --- Concise Email Body ---
-            let body = '【UrbanicStudioShinbashi 概算見積】\n';
+            let body = '【UrbanicStudioShinbashi 概算見積】\n\n';
             body += '担当者より折り返しご連絡いたします。\n\n';
             body += '--- ご利用日時 ---\n';
             body += `期間: ${startDate} ${startTime} - ${endDate} ${endTime}\n`;
@@ -829,15 +902,14 @@
             body += '上記ご記入の上、ご返信ください。\n';
             body += '---------------------------------';
 
-            // Use encodeURIComponent for proper encoding
-            const mailtoLink = `mailto:studio@semade.co.jp?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            document.getElementById('emailBody').value = body;
             
-            // For debugging length issues
-            if (mailtoLink.length > 2000) {
-                 console.warn("Mailto link is very long and might fail in some clients:", mailtoLink.length);
-            }
+            const mailtoLink = `mailto:studio@semade.co.jp?subject=${encodeURIComponent(subject)}`;
+            document.getElementById('openMailClientButton').onclick = () => {
+                window.location.href = mailtoLink;
+            };
 
-            window.location.href = mailtoLink;
+            openModal();
         }
 
         // 初期値の設定
@@ -892,5 +964,27 @@
         initializeDates();
         window.onload = updateQuote;
     </script>
+
+    <!-- The Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="text-2xl font-bold mb-4">メール内容の確認と送信</h3>
+            <p class="text-sm mb-4">以下の内容で見積もりメールを生成しました。内容をコピーし、メールソフトに貼り付けて送信してください。</p>
+
+            <textarea id="emailBody" readonly class="w-full h-48 p-2 border border-gray-300 rounded-md bg-gray-50 mb-4"></textarea>
+
+            <div class="flex justify-end space-x-4">
+                <button id="copyButton" onclick="copyEmailBody()" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+                    本文をコピー
+                </button>
+                <button id="openMailClientButton" class="main-gradient text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300">
+                    メールソフトを起動
+                </button>
+            </div>
+             <p id="copy-success" class="text-sm text-green-600 mt-2 font-bold" style="display: none;">✅ メール本文をクリップボードにコピーしました。</p>
+        </div>
+    </div>
+
 </body>
 </html>
