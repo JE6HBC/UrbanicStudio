@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanicStudioShinbashi | プロフェッショナル配信・収録</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        .main-gradient {
+            background: linear-gradient(135deg, #0041C2 0%, #0081C9 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, #0081C9, #0041C2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .price-card {
+            transition: all 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .validation-error {
+            border-color: #EF4444; 
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="main-gradient text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-black mb-4">UrbanicStudioShinbashi</h1>
+            <p class="text-xl md:text-2xl font-light mb-8">都心一等地で実現する、プロ仕様の映像収録・ライブ配信</p>
+            
+            <div class="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg inline-block text-lg shadow-md mb-6">
+                【ベータ版運用中】現在はご紹介者様経由でのご予約のみ承っております。
+            </div>
+
+            <a href="#quote" class="bg-[#5BC0F8] hover:bg-[#86E5FF] text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">簡易お見積もりはこちら</a>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- 2室連携と図面/写真スペース -->
+        <section id="layout" class="mb-20">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">2室連携が生み出すプロフェッショナルな環境</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">当スタジオは、メインスタジオと隣接するサブコントロールルーム（作業部屋）の2室を連携させることで、高品質な映像・音声の制御と配信を可能にします。コンパクトながら、大規模スタジオと同等の機能を提供します。</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">スタジオ図面・レイアウト</h3>
+                    <div id="layout-image" class="w-full h-80 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xl font-bold overflow-hidden">
+                        TBD (PNG/JPEG画像スペース)
+                        <img id="layout-img" src="" onerror="this.style.display='none'; document.getElementById('layout-image').style.display='flex';" style="display:none; width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500">※ 画像が指定され次第、ここにスタジオの図面が表示されます。</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">スタジオ写真・内観</h3>
+                    <div id="photo-image" class="w-full h-80 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xl font-bold overflow-hidden">
+                        TBD (PNG/JPEG画像スペース)
+                        <img id="photo-img" src="" onerror="this.style.display='none'; document.getElementById('photo-image').style.display='flex';" style="display:none; width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500">※ 画像が指定され次第、ここにスタジオの内観写真が表示されます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Map セクション追加 -->
+        <section id="access" class="mb-20">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">アクセス</h2>
+            <div class="bg-white rounded-xl shadow-lg p-6 max-w-4xl mx-auto">
+                <p class="text-xl font-bold text-gray-700 mb-4">所在地：東京都港区新橋4-5-1 (詳細はお問い合わせ後にご案内します)</p>
+                <div class="w-full h-96 rounded-lg overflow-hidden border border-gray-300">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0028250266185!2d139.75657857599763!3d35.67665243015923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b0a9f5c4001%3A0x889c20a9a147e45!2z5p2x5qiq44K444Oz44Kw44Oh!5e0!3m2!1sja!2sjp!4v1633590000000" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">※ JR新橋駅、都営三田線御成門駅など複数路線からのアクセスに優れています。</p>
+            </div>
+        </section>
+        <!-- Google Map セクション終了 -->
+
+
+        <!-- 料金表 -->
+        <section id="price" class="mb-20">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">料金体系</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 基本価格カード -->
+                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-blue-500">
+                    <h3 class="text-2xl font-bold mb-4">基本スタジオ利用料 (税込)</h3>
+                    <p class="text-4xl font-black text-blue-600 mb-2">¥15,620 <span class="text-lg font-normal text-gray-500">/時間</span></p>
+                    <p class="text-sm text-gray-500 mb-4">※ 3時間より承ります。</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>メインスタジオ＋サブコントロールルーム利用</li>
+                        <li>機材一式レンタル（下記機材リスト参照）</li>
+                        <li>**セッティングサポート**（機材の展開・撤収補助）</li>
+                        <li>有線インカム 4ch 使用可能</li>
+                    </ul>
+                </div>
+                <!-- 割引・割増カード -->
+                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-yellow-500">
+                    <h3 class="text-2xl font-bold mb-4">割増・割引規定</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <p class="font-bold text-gray-700">長時間割増（8時間超過）</p>
+                            <p class="text-xl text-yellow-600 font-bold">+ 10%</p>
+                            <p class="text-sm text-gray-500">※ 基本料金・時間オプションに自動適用</p>
+                        </li>
+                        <li>
+                            <p class="font-bold text-gray-700">深夜割増（22:00〜翌7:00）</p>
+                            <p class="text-xl text-yellow-600 font-bold">+ 30%</p>
+                            <p class="text-sm text-gray-500">※ 基本料金・時間オプションに適用。スタッフ交通費実費追加。</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 学生割引カード -->
+                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-green-500">
+                    <h3 class="text-2xl font-bold mb-4">各種割引プラン</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <p class="font-bold text-gray-700">ベータ版期間割引</p>
+                            <p class="text-xl text-green-600 font-bold">20% OFF</p>
+                            <p class="text-sm text-gray-500">※ 現在強制適用されています。</p>
+                        </li>
+                        <li>
+                            <p class="font-bold text-gray-700">学生割引</p>
+                            <p class="text-xl text-green-600 font-bold">20% OFF</p>
+                            <p class="text-sm text-gray-500">※ 学生アドレスでのやり取りが必須。</p>
+                        </li>
+                        <li>
+                            <p class="font-bold text-gray-700">動画代理販売割引</p>
+                            <p class="text-xl text-green-600 font-bold">10% OFF</p>
+                            <p class="text-sm text-gray-500">※ 弊社での動画代理販売（編集なし）を条件とします。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- オプションリスト -->
+            <div class="bg-white rounded-xl shadow-xl p-8 mt-12">
+                <h3 class="text-2xl font-bold mb-4 text-blue-600">オプションサービス (全て税込)</h3>
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-gray-700">
+                    <div>
+                        <p class="font-bold">TD人件費 <span class="text-base font-normal text-gray-500">（技術ディレクター）</span></p>
+                        <p class="text-lg">¥11,000 / 時間</p>
+                        <p class="text-sm text-gray-500">※ カメラマン不在時は固定カメラでの運用が基本となります。</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">カメラ人件費 <span class="text-base font-normal text-gray-500">（カメラワーク担当）</span></p>
+                        <p class="text-lg">¥8,800 / 時間</p>
+                        <p class="text-sm text-gray-500">※ カメラワークが必要な場合は必須となります。</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">カメラ台数追加 <span class="text-base font-normal text-gray-500">（レンタル）</span></p>
+                        <p class="text-lg">¥11,000 / 台</p>
+                        <p class="text-sm text-gray-500">※ 収録品質に応じたカメラをご用意します。</p>
+                    </div>
+                    <div><p class="font-bold">縦動画対応設定</p><p class="text-lg">¥11,000 / 一回</p></div>
+                    <div><p class="font-bold">主要機器バックアップ電源（モバイル電源）</p><p class="text-lg">¥5,500 / 一回</p></div>
+                    <div><p class="font-bold">バックアップ回線（4G/5Gテザリング）</p><p class="text-lg">¥3,300 / 一回</p></div>
+                    <div><p class="font-bold">印刷（カラー）</p><p class="text-lg">¥33 / 枚</p></div>
+                    <div><p class="font-bold">印刷（モノクロ）</p><p class="text-lg">¥11 / 枚</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 設備リスト (変更なし) -->
+        <section id="equipment" class="mb-20">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">機材・設備リスト</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">～スタジオ機材 (メイン)～</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>大型返しモニタ</li>
+                        <li>業務用カメラ x2 (カメラマン依頼なしの場合は固定)</li>
+                        <li>ガンマイク x2</li>
+                        <li>Wiress Go2 x2 (ワイヤレスマイク)</li>
+                        <li>照明 小型白熱灯照明 x6 (各種)</li>
+                        <li>照明 LEDカラー x2 (大, 小, DMX制御可)</li>
+                        <li>照明 ディマー（小型白熱灯照明用）</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">～調整室機材 (サブコントロールルーム)～</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>中型モニタ（マルチビュー用）</li>
+                        <li>スイッチャー（Blackmagic Atem mini pro iso または Blackmagic Atem Production Studio 4K）</li>
+                        <li>ストリーミングエンコーダ（Blackmagicdesign WebPresenter）</li>
+                        <li>テロップ送出マシン (OBS搭載)</li>
+                        <li>音声卓（Zoom L-8）</li>
+                        <li>ヘッドフォン x3</li>
+                        <li>有線インカム x4</li>
+                        <li>DMXコントローラー (照明制御)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-gray-100 rounded-xl shadow-inner p-6 mt-8">
+                <h3 class="text-2xl font-bold mb-4 text-gray-700">～設備・メディアに関する規定～</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+                    <div>
+                        <p class="font-bold">回線・電源</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>回線：フレッツ 100Mbpsベストエフォート (平日日中平均 Down50Mbps/Up80Mbps)</li>
+                            <li>電源：一般商用電源</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-bold">メディア・収録素材</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>収録素材は基本的にGoogleDriveでの共有となります。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 border-l-4 border-blue-500 bg-blue-50">
+                    <p class="font-bold text-blue-800">【収録番組の代理販売サポート】</p>
+                    <p class="text-sm text-blue-700">収録番組の代理販売が可能です。売上が1,000円を超えた場合、弊社にプラットフォームから入金される額の50%をバックし、さらに**スタジオ費用全体を1割引**とさせていただきます。（売上はスクリーンショット等で共有いたします）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 制作の流れとクライアントの役割 (変更なし) -->
+        <section id="flow" class="mb-20">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">映像制作の流れとクライアント様の役割</h2>
+            
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 制作の流れ（初心者向け） -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-blue-600">① 映像制作の流れ（初心者向け）</h3>
+                        <ol class="space-y-4">
+                            <li class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded flex items-center">
+                                <span class="text-xl font-bold mr-3">1.</span>
+                                <div><p class="font-bold">企画・構成</p><p class="text-sm text-gray-600">何を、誰に、どう伝えるか決定。（台本作成・資料準備）</p></div>
+                            </li>
+                            <li class="p-3 bg-gray-50 border-l-4 border-gray-400 rounded flex items-center">
+                                <span class="text-xl font-bold mr-3">2.</span>
+                                <div><p class="font-bold">スタジオ予約・見積もり</p><p class="text-sm text-gray-600">本ページの見積もりツールで日程と機材を決定。</p></div>
+                            </li>
+                            <li class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded flex items-center">
+                                <span class="text-xl font-bold mr-3">3.</span>
+                                <div><p class="font-bold">収録・配信当日</p><p class="text-sm text-gray-600">弊社オペレーターのサポートのもと、撮影・配信を実行。</p></div>
+                            </li>
+                            <li class="p-3 bg-gray-50 border-l-4 border-gray-400 rounded flex items-center">
+                                <span class="text-xl font-bold mr-3">4.</span>
+                                <div><p class="font-bold">納品・公開</p><p class="text-sm text-gray-600">収録データをGoogle Driveで共有。必要に応じて編集へ。</p></div>
+                            </li>
+                        </ol>
+                        <p class="mt-4 text-sm text-gray-600 border-t pt-2">**連携業者との制作も可能:** 映像の内容に関わる企画・編集・制作も別途お見積りで承ります。</p>
+                    </div>
+                    
+                    <!-- クライアントの役割 (変更なし) -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-blue-600">② クライアント様にご担当いただくこと</h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="p-4 border-2 border-gray-200 rounded">
+                                <p class="font-bold">1. 企画・台本の作成</p>
+                                <p class="text-sm text-gray-600">動画の目的、構成、喋る内容（台本）の作成をお願いします。</p>
+                            </li>
+                            <li class="p-4 border-2 border-gray-200 rounded">
+                                <p class="font-bold">2. 出演者・資料の準備</p>
+                                <p class="text-sm text-gray-600">登壇者、使用するプレゼン資料（PPTなど）のご準備をお願いします。</p>
+                            </li>
+                            <li class="p-4 border-2 border-gray-200 rounded">
+                                <p class="font-bold">3. 配信先アカウントの用意</p>
+                                <p class="text-sm text-gray-600">YouTube, Zoomなどの配信プラットフォームのアカウントと設定をご準備ください。</p>
+                            </p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 取引条件 -->
+        <section id="terms" class="mb-20 max-w-4xl mx-auto">
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-6 shadow-md">
+                <h3 class="text-2xl font-bold mb-4 text-yellow-800">取引条件（重要）</h3>
+                <ul class="list-disc list-inside space-y-3 text-sm text-gray-700">
+                    <li>**【予約時のお支払い】** 予約確定時をもって、お見積もり総額の**40%**を口座振り込みまたはカード決済（将来対応）にてお支払いいただきます。</li>
+                    <li>**【残額のお支払い】** 残りの**60%**を、収録完了後、**翌月末**までの決済としてお支払いいただきます。</li>
+                    <li>**【遅延損害金】** お支払い期限を遅延された場合は、**年率14.6%**の遅延損害金が発生いたします。</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- 簡易見積書作成ツール -->
+        <section id="quote" class="mb-20">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">簡易お見積もりツール</h2>
+            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 border-t-8 border-blue-500 max-w-4xl mx-auto">
+                
+                <form id="quote-form" onsubmit="event.preventDefault(); sendQuoteEmail();">
+                    
+                    <h3 class="text-2xl font-bold mb-6 text-gray-700">1. 日程と作業時間 (必須)</h3>
+                    <p id="time-limit-warning" class="text-sm text-red-600 mt-1 font-bold mb-4" style="display: none;">🚨 エラー：利用開始日時は現在時刻より3時間以上先を指定してください。</p>
+
+                    
+                    <!-- 日時指定 -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <label for="startDate" class="block text-sm font-medium text-gray-700">利用開始日</label>
+                            <input type="date" id="startDate" required onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="startTime" class="block text-sm font-medium text-gray-700">開始時間 (30分単位)</label>
+                            <input type="time" id="startTime" step="1800" value="13:00" required onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="endDate" class="block text-sm font-medium text-gray-700">利用終了日</label>
+                            <input type="date" id="endDate" required onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="endTime" class="block text-sm font-medium text-gray-700">終了時間 (30分単位)</label>
+                            <input type="time" id="endTime" step="1800" value="16:00" required onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                    </div>
+
+                    <!-- 作業時間内訳 -->
+                    <div class="grid md:grid-cols-4 gap-4 mb-3 p-4 bg-blue-50 rounded-lg">
+                        <div>
+                            <label for="setupHours" class="block text-sm font-medium text-gray-700">仕込み時間 (時間)</label>
+                            <input type="number" id="setupHours" min="0" step="0.5" value="1.0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="rehearsalHours" class="block text-sm font-medium text-gray-700">リハーサル時間 (時間)</label>
+                            <input type="number" id="rehearsalHours" min="0" step="0.5" value="0.5" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="mainHours" class="block text-sm font-medium text-gray-700">本番時間 (時間)</label>
+                            <input type="number" id="mainHours" min="0" step="0.5" value="1.0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="teardownHours" class="block text-sm font-medium text-gray-700">撤収時間 (時間)</label>
+                            <input type="number" id="teardownHours" min="0" step="0.5" value="0.5" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <label for="hours" class="block text-sm font-medium text-gray-700">合計利用時間 (最小3時間)</label>
+                            <input type="number" id="hours" min="3" value="3.0" required readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border bg-gray-100 font-bold">
+                            <p id="time-mismatch-warning" class="text-sm text-red-600 mt-1 font-bold" style="display: none;">🚨 エラー：内訳と合計利用時間が一致しません。修正してください。</p>
+                            <p class="text-xs text-gray-500 mt-1">※ 自動計算されます。3時間未満の場合は3時間として計上されます。</p>
+                        </div>
+                        <div>
+                            <label for="isStudent" class="block text-sm font-medium text-gray-700">割引・割増適用</label>
+                            <select id="isStudent" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                                <option value="false">適用しない</option>
+                                <option value="true">学生割引 (20%OFF)</option>
+                            </select>
+                            <div class="flex items-center mt-2 space-x-4 text-xs">
+                                <div class="flex items-center">
+                                    <input id="isBetaDiscount" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded" disabled>
+                                    <label for="isBetaDiscount" class="ml-2 text-gray-700 font-bold">ベータ版期間割引 (+20%)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="isOver8Hours" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded" disabled>
+                                    <label for="isOver8Hours" class="ml-2 text-gray-700">8時間超過割増 (+10%)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="isLateNight" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded" disabled>
+                                    <label for="isLateNight" class="ml-2 text-gray-700">深夜稼働割増 (+30%)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-6 text-gray-700 border-t pt-6">2. 実施内容と配信プラットフォーム</h3>
+                    
+                    <!-- アクティビティ選択 -->
+                    <div class="grid md:grid-cols-2 gap-4 mb-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex items-center">
+                            <input id="activityRecording" type="checkbox" name="activity" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                            <label for="activityRecording" class="ml-2 block text-sm font-medium text-gray-700">収録 (編集・素材利用が目的)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="activityStreaming" type="checkbox" name="activity" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                            <label for="activityStreaming" class="ml-2 block text-sm font-medium text-gray-700">配信 (ライブまたは擬似ライブ)</label>
+                        </div>
+                    </div>
+
+                    <!-- プラットフォーム選択 -->
+                    <div class="mb-8 p-4 bg-gray-50 rounded-lg">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">主な配信プラットフォーム (複数選択可)</label>
+                        <div class="grid grid-cols-3 gap-2 text-sm">
+                            <div class="flex items-center"><input id="platYoutube" type="checkbox" name="platform" class="h-4 w-4 text-blue-600 rounded mr-2"><label for="platYoutube">YouTube Live</label></div>
+                            <div class="flex items-center"><input id="platZoom" type="checkbox" name="platform" class="h-4 w-4 text-blue-600 rounded mr-2"><label for="platZoom">Zoom/Teams</label></div>
+                            <div class="flex items-center"><input id="platVimeo" type="checkbox" name="platform" class="h-4 w-4 text-blue-600 rounded mr-2"><label for="platVimeo">Vimeo</label></div>
+                            <div class="flex items-center col-span-3">
+                                <label for="otherPlatform" class="mr-2">その他:</label>
+                                <input type="text" id="otherPlatform" placeholder="例: ニコ生, Facebook Live" class="w-full rounded-md border-gray-300 shadow-sm p-1 border text-xs">
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-3 border-t pt-3 space-x-4">
+                            <div class="flex items-center">
+                                <input id="optVimeoProxy" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-red-600 border-gray-300 rounded">
+                                <label for="optVimeoProxy" class="ml-2 block text-sm font-bold text-red-700">Vimeo代理配信オプション (+¥11,000 税込)</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="isAgencyDiscount" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-green-600 border-gray-300 rounded">
+                                <label for="isAgencyDiscount" class="ml-2 block text-sm font-bold text-green-700">動画代理販売割引 (-10%)</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h3 class="text-2xl font-bold mb-6 text-gray-700 border-t pt-6">3. オプションサービス (人件費・機材)</h3>
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <!-- 人件費オプション -->
+                        <div>
+                            <label for="tdCount" class="block text-sm font-medium text-gray-700">TD人件費 (¥11,000/時/人)</label>
+                            <input type="number" id="tdCount" min="0" value="0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="cameraManCount" class="block text-sm font-medium text-gray-700">カメラ人件費 (¥8,800/時/人)</label>
+                            <input type="number" id="cameraManCount" min="0" value="0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <!-- 機材オプション -->
+                        <div>
+                            <label for="extraCameraCount" class="block text-sm font-medium text-gray-700">カメラ台数追加 (¥11,000/台)</label>
+                            <input type="number" id="extraCameraCount" min="0" value="0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-6 text-gray-700 border-t pt-6">4. 固定オプション・印刷・要望</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-8">
+                        <!-- 固定オプション -->
+                        <div class="flex items-center p-3 bg-gray-50 rounded">
+                            <input id="optVertical" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                            <label for="optVertical" class="ml-2 block text-sm text-gray-700">縦動画対応 (¥11,000 税込)</label>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-50 rounded">
+                            <input id="optMobilePower" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                            <label for="optMobilePower" class="ml-2 block text-sm text-gray-700">主要機器バックアップ電源 (¥5,500 税込)</label>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-50 rounded">
+                            <input id="optBackupLine" type="checkbox" onchange="updateQuote()" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                            <label for="optBackupLine" class="ml-2 block text-sm text-gray-700">バックアップ回線 (¥3,300 税込)</label>
+                        </div>
+                        <!-- 印刷 -->
+                        <div>
+                            <label for="printColor" class="block text-sm font-medium text-gray-700">印刷 (カラー ¥33/枚 税込)</label>
+                            <input type="number" id="printColor" min="0" value="0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                        <div>
+                            <label for="printMono" class="block text-sm font-medium text-gray-700">印刷 (モノクロ ¥11/枚 税込)</label>
+                            <input type="number" id="printMono" min="0" value="0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label for="customRequest" class="block text-sm font-medium text-gray-700">カスタマイズ要望・特記事項</label>
+                        <textarea id="customRequest" rows="3" placeholder="例: 配信先のURL調整、クロマキー合成の希望、特別なレイアウトなど" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"></textarea>
+                    </div>
+
+                </form>
+
+                <!-- 合計金額表示 -->
+                <div class="border-t pt-6 mt-6">
+                    <h3 class="text-xl font-bold mb-4">お見積もり合計金額</h3>
+                    
+                    <!-- 小計内訳 -->
+                    <div id="subtotalDetails" class="mt-4 p-4 bg-gray-50 rounded-lg border space-y-1">
+                        <div class="flex justify-between text-sm"><span>基本料金・オプション合計 (税抜):</span><span id="subBaseOptions">¥0</span></div>
+                        <div class="flex justify-between text-sm text-yellow-700"><span>割増料金小計 (税抜):</span><span id="subSurcharge">+¥0</span></div>
+                        <div class="flex justify-between text-sm text-green-700"><span>割引適用額小計 (税抜):</span><span id="subDiscount">-¥0</span></div>
+                        <div class="flex justify-between font-bold border-t mt-2 pt-2 text-gray-700"><span>小計 (税抜):</span><span id="subTaxExcluded">¥0</span></div>
+                        <div class="flex justify-between text-sm text-gray-600"><span>消費税 (10%):</span><span id="subTaxAmount">¥0</span></div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-blue-100 p-4 rounded-lg mt-4">
+                        <span class="text-2xl font-bold text-gray-700">TOTAL (税込):</span>
+                        <span id="totalAmount" class="text-4xl font-black text-blue-600">¥0</span>
+                    </div>
+                    <p id="discount-note" class="text-sm text-green-600 mt-2 font-bold" style="display: none;">※ 割引が適用されています。</p>
+                    <p id="late-night-note" class="text-sm text-yellow-600 mt-2 font-bold" style="display: none;">※ 深夜稼働割増料金にスタッフ交通費実費が別途加算されます。</p>
+                </div>
+
+                <!-- メール送信ボタン -->
+                <div class="mt-8">
+                    <button id="sendQuoteButton" onclick="sendQuoteEmail()" class="w-full main-gradient text-white font-bold py-3 rounded-md shadow-lg hover:opacity-90 transition duration-300">
+                        見積もり内容をメールで送信 (studio@semade.co.jp)
+                    </button>
+                    <p class="text-xs text-gray-500 mt-2 text-center">※ 概算です。正確な見積もりはメールでお問い合わせください。</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">運営：<a href="https://www.semade.co.jp" target="_blank" class="text-blue-400 hover:text-blue-300 underline">SE.MADE Co. Ltd.</a></p>
+            <p class="text-sm">&copy; 2025 UrbanicStudioShinbashi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ★★★ 運用切り替えフラグ ★★★
+        const IS_BETA_MODE = true; // false に変更するとベータ版割引が解除されます
+        const BETA_DISCOUNT_RATE = 0.20; // 20%
+        // ★★★ 運用切り替えフラグ ★★★
+
+        // 定数をすべて税抜で定義
+        const BASE_RATE_EX = 14200;
+        const TD_RATE_EX = 10000; 
+        const CAMERA_MAN_RATE_EX = 8000;
+        const EXTRA_CAMERA_RATE_EX = 10000; 
+        const TAX_RATE = 0.10;
+
+        const FIXED_OPTIONS_EX = {
+            vertical: 10000,
+            mobilePower: 5000,
+            backupLine: 3000,
+            vimeoProxy: 10000 
+        };
+
+        const PRINT_RATES_EX = {
+            color: 30,
+            mono: 10
+        };
+
+        const STUDENT_DISCOUNT_RATE = 0.20; // 20%
+        const AGENCY_DISCOUNT_RATE = 0.10; // 10%
+
+        
+        function checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours) {
+            const sumOfParts = setupHours + rehearsalHours + mainHours + teardownHours;
+            // 浮動小数点誤差を考慮し、微小な差を許容
+            return Math.abs(totalHours - sumOfParts) > 0.01;
+        }
+
+        function isStartTimeValid(startDate, startTime) {
+            if (!startDate || !startTime) return false;
+
+            const startDateTime = new Date(`${startDate}T${startTime}:00`);
+            const now = new Date();
+            const threeHoursLater = new Date(now.getTime() + 3 * 60 * 60 * 1000); // 現在時刻 + 3時間
+
+            // 開始日時が現在時刻より3時間以上先であるかをチェック
+            return startDateTime.getTime() >= threeHoursLater.getTime();
+        }
+
+        function updateQuote() {
+            // UIのベータ版割引チェックボックスの状態をフラグに基づいて設定
+            const betaCheckbox = document.getElementById('isBetaDiscount');
+            if (IS_BETA_MODE) {
+                betaCheckbox.checked = true;
+                betaCheckbox.disabled = true;
+            } else {
+                betaCheckbox.checked = false;
+                betaCheckbox.disabled = true; // ベータ期間終了後は手動適用も禁止
+            }
+
+            // 日時入力値の取得
+            const startDate = document.getElementById('startDate').value;
+            const startTime = document.getElementById('startTime').value;
+            const timeWarningLimit = document.getElementById('time-limit-warning');
+            
+            // --- 0. 時間制限バリデーション ---
+            const isTimeValid = isStartTimeValid(startDate, startTime);
+            let blockSubmission = false;
+
+            if (startDate && startTime && !isTimeValid) {
+                timeWarningLimit.style.display = 'block';
+                blockSubmission = true;
+            } else {
+                timeWarningLimit.style.display = 'none';
+            }
+            
+            // 作業時間内訳の取得
+            const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
+            const rehearsalHours = parseFloat(document.getElementById('rehearsalHours').value) || 0;
+            const mainHours = parseFloat(document.getElementById('mainHours').value) || 0;
+            const teardownHours = parseFloat(document.getElementById('teardownHours').value) || 0;
+
+            let totalHours = setupHours + rehearsalHours + mainHours + teardownHours;
+            
+            // --- 0. 時間整合性バリデーション ---
+            const isMismatch = checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours);
+            const timeWarningMismatch = document.getElementById('time-mismatch-warning');
+            const sendButton = document.getElementById('sendQuoteButton');
+            
+            if (isMismatch) {
+                timeWarningMismatch.style.display = 'block';
+                blockSubmission = true;
+            } else {
+                timeWarningMismatch.style.display = 'none';
+            }
+
+            // 送信ボタンの制御
+            if (blockSubmission) {
+                sendButton.disabled = true;
+                sendButton.classList.add('opacity-50');
+                document.getElementById('hours').classList.add('validation-error');
+                // 見積もり表示をクリア
+                document.getElementById('totalAmount').textContent = '要修正';
+                document.getElementById('subTaxExcluded').textContent = '要修正';
+                document.getElementById('subTaxAmount').textContent = '要修正';
+                document.getElementById('subBaseOptions').textContent = '¥0';
+                document.getElementById('subSurcharge').textContent = '+¥0';
+                document.getElementById('subDiscount').textContent = '-¥0';
+                return;
+            } else {
+                sendButton.disabled = false;
+                sendButton.classList.remove('opacity-50');
+                document.getElementById('hours').classList.remove('validation-error');
+            }
+
+
+            // 3時間未満の場合は3時間として計算 
+            const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
+            
+            document.getElementById('hours').value = totalHours.toFixed(1); // 合計時間を表示
+
+            const isStudent = document.getElementById('isStudent').value === 'true';
+            const isAgencyDiscount = document.getElementById('isAgencyDiscount').checked;
+
+            // 割増の自動判定
+            const isOver8Hours = hoursForCalculation > 8;
+            const isLateNight = document.getElementById('isLateNight').checked; // 深夜稼働はユーザーがチェック
+
+            // UIを自動判定結果で上書き
+            document.getElementById('isOver8Hours').checked = isOver8Hours;
+            // document.getElementById('isLateNight').checked = isLateNight; // 深夜は手動チェックを尊重
+
+            const tdCount = parseInt(document.getElementById('tdCount').value) || 0;
+            const cameraManCount = parseInt(document.getElementById('cameraManCount').value) || 0;
+            const extraCameraCount = parseInt(document.getElementById('extraCameraCount').value) || 0;
+            
+            const optVertical = document.getElementById('optVertical').checked;
+            const optMobilePower = document.getElementById('optMobilePower').checked;
+            const optBackupLine = document.getElementById('optBackupLine').checked;
+            const optVimeoProxy = document.getElementById('optVimeoProxy').checked;
+
+            const printColor = parseInt(document.getElementById('printColor').value) || 0;
+            const printMono = parseInt(document.getElementById('printMono').value) || 0;
+
+            // --- 1. 基本料金とオプションの計算 (全て税抜 EX) ---
+            
+            // 1a. 基本料金と時間オプション (割増対象)
+            let baseCost_ex = BASE_RATE_EX * hoursForCalculation;
+            let timeOptionCost_ex = 0;
+            timeOptionCost_ex += TD_RATE_EX * tdCount * hoursForCalculation;
+            timeOptionCost_ex += CAMERA_MAN_RATE_EX * cameraManCount * hoursForCalculation;
+            
+            const surchargeBase = baseCost_ex + timeOptionCost_ex;
+
+            // 1b. 固定オプション、機材追加、印刷費
+            let fixedOptionCost_ex = 0;
+            if (optVertical) fixedOptionCost_ex += FIXED_OPTIONS_EX.vertical;
+            if (optMobilePower) fixedOptionCost_ex += FIXED_OPTIONS_EX.mobilePower;
+            if (optBackupLine) fixedOptionCost_ex += FIXED_OPTIONS_EX.backupLine;
+            if (optVimeoProxy) fixedOptionCost_ex += FIXED_OPTIONS_EX.vimeoProxy;
+            
+            let extraCameraCost_ex = EXTRA_CAMERA_RATE_EX * extraCameraCount;
+            let printCost_ex = (printColor * PRINT_RATES_EX.color) + (printMono * PRINT_RATES_EX.mono);
+
+            // 1c. 基本料金・オプション合計 (割増前)
+            const totalBaseOptions_ex = baseCost_ex + timeOptionCost_ex + fixedOptionCost_ex + extraCameraCost_ex + printCost_ex;
+
+            // --- 2. 割増計算 (税抜 EX) ---
+            let surchargeAmount_ex = 0;
+
+            if (isOver8Hours) {
+                surchargeAmount_ex += surchargeBase * 0.10;
+            }
+            if (isLateNight) {
+                surchargeAmount_ex += surchargeBase * 0.30;
+            }
+            
+            // --- 3. 割引計算 (税抜 EX) ---
+            let discountAmount_ex = 0;
+            
+            // 割引対象額は割増適用後の基本料金・オプション総額
+            const discountBase = totalBaseOptions_ex + surchargeAmount_ex;
+
+            // ベータ版割引
+            if (IS_BETA_MODE) {
+                discountAmount_ex += discountBase * BETA_DISCOUNT_RATE;
+            }
+            
+            // 学生割引
+            if (isStudent) {
+                discountAmount_ex += discountBase * STUDENT_DISCOUNT_RATE; 
+            }
+            
+            // 代理販売割引
+            if (isAgencyDiscount) {
+                discountAmount_ex += discountBase * AGENCY_DISCOUNT_RATE;
+            }
+
+            // --- 4. 最終合計 ---
+            // 小計 (税抜)
+            const subTaxExcluded = totalBaseOptions_ex + surchargeAmount_ex - discountAmount_ex;
+
+            // 税金
+            const taxAmount = subTaxExcluded * TAX_RATE;
+
+            // 最終合計 (税込)
+            const finalTotal = subTaxExcluded + taxAmount;
+            
+            // 負の金額にならないように調整
+            if (finalTotal < 0) finalTotal = 0;
+            if (subTaxExcluded < 0) subTaxExcluded = 0;
+            if (discountAmount_ex < 0) discountAmount_ex = 0;
+            if (surchargeAmount_ex < 0) surchargeAmount_ex = 0;
+
+            // UI更新
+            const format = (num) => Math.round(num).toLocaleString();
+
+            document.getElementById('totalAmount').textContent = '¥' + format(finalTotal);
+            document.getElementById('subBaseOptions').textContent = '¥' + format(totalBaseOptions_ex);
+            document.getElementById('subSurcharge').textContent = '+¥' + format(surchargeAmount_ex);
+            document.getElementById('subDiscount').textContent = '-¥' + format(discountAmount_ex);
+            document.getElementById('subTaxExcluded').textContent = '¥' + format(subTaxExcluded);
+            document.getElementById('subTaxAmount').textContent = '¥' + format(taxAmount);
+            
+            document.getElementById('discount-note').style.display = (isStudent || isAgencyDiscount || IS_BETA_MODE) ? 'block' : 'none';
+            document.getElementById('late-night-note').style.display = isLateNight ? 'block' : 'none';
+        }
+        
+        function getSelectedPlatforms() {
+            const platforms = [];
+            if (document.getElementById('platYoutube').checked) platforms.push('YouTube Live');
+            if (document.getElementById('platZoom').checked) platforms.push('Zoom/Teams');
+            if (document.getElementById('platVimeo').checked) platforms.push('Vimeo');
+            const other = document.getElementById('otherPlatform').value.trim();
+            if (other) platforms.push('その他: ' + other);
+            return platforms.join(', ');
+        }
+
+        function getSelectedActivities() {
+            const activities = [];
+            if (document.getElementById('activityRecording').checked) activities.push('収録');
+            if (document.getElementById('activityStreaming').checked) activities.push('配信');
+            return activities.join(', ');
+        }
+        
+        function sendQuoteEmail() {
+            const totalHours = parseFloat(document.getElementById('hours').value) || 0;
+            const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
+            const rehearsalHours = parseFloat(document.getElementById('rehearsalHours').value) || 0;
+            const mainHours = parseFloat(document.getElementById('mainHours').value) || 0;
+            const teardownHours = parseFloat(document.getElementById('teardownHours').value) || 0;
+
+            const startDate = document.getElementById('startDate').value;
+            const startTime = document.getElementById('startTime').value;
+            
+            if (checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours)) {
+                alert('🚨 エラー：仕込み/リハ/本番/撤収の合計時間と「合計利用時間」が一致しません。修正してから送信してください。');
+                return;
+            }
+            if (!isStartTimeValid(startDate, startTime)) {
+                alert('🚨 エラー：利用開始日時は現在時刻より3時間以上先を指定してください。');
+                return;
+            }
+
+
+            const endDate = document.getElementById('endDate').value;
+            const endTime = document.getElementById('endTime').value;
+            const hours = document.getElementById('hours').value; // 実時間
+            const hoursForCalculation = totalHours < 3 ? 3 : totalHours; // 計算時間
+
+            const isStudent = document.getElementById('isStudent').value === 'true';
+            const isAgencyDiscount = document.getElementById('isAgencyDiscount').checked;
+            const isOver8Hours = hoursForCalculation > 8;
+            const isLateNight = document.getElementById('isLateNight').checked;
+            
+            const totalAmount = document.getElementById('totalAmount').textContent;
+            const subTaxExcluded = document.getElementById('subTaxExcluded').textContent;
+            const subTaxAmount = document.getElementById('subTaxAmount').textContent;
+            
+            const tdCount = document.getElementById('tdCount').value;
+            const cameraManCount = document.getElementById('cameraManCount').value;
+            const extraCameraCount = document.getElementById('extraCameraCount').value;
+            
+            const optVertical = document.getElementById('optVertical').checked ? '縦動画対応(有)' : '縦動画対応(無)';
+            const optMobilePower = document.getElementById('optMobilePower').checked ? 'バックアップ電源(有)' : 'バックアップ電源(無)';
+            const optBackupLine = document.getElementById('optBackupLine').checked ? 'バックアップ回線(有)' : 'バックアップ回線(無)';
+            const optVimeoProxy = document.getElementById('optVimeoProxy').checked ? 'Vimeo代理配信(有)' : 'Vimeo代理配信(無)';
+
+            const printColor = document.getElementById('printColor').value;
+            const printMono = document.getElementById('printMono').value;
+            const customRequest = document.getElementById('customRequest').value || '特になし';
+
+            const subject = encodeURIComponent('UrbanicStudioShinbashi 見積もり依頼 (' + totalAmount + ')');
+            let body = '■UrbanicStudioShinbashi 簡易見積もり内容■\n\n';
+            body += '---------------------------------\n';
+            body += '【希望利用スケジュール】\n';
+            body += '開始日時: ' + startDate + ' ' + startTime + '\n';
+            body += '終了日時: ' + endDate + ' ' + endTime + '\n';
+            body += '合計利用時間: ' + hours + '時間\n';
+            body += '（内訳）仕込み: ' + setupHours + '時間, リハーサル: ' + rehearsalHours + '時間, 本番: ' + mainHours + '時間, 撤収: ' + teardownHours + '時間\n';
+            body += '---------------------------------\n';
+            body += '【制作内容】\n';
+            body += '実施内容: ' + getSelectedActivities() + '\n';
+            body += '配信プラットフォーム: ' + getSelectedPlatforms() + '\n';
+            body += '---------------------------------\n';
+            body += '【料金条件】\n';
+            body += 'ベータ版割引: ' + (IS_BETA_MODE ? '適用 (20% OFF)' : '適用外') + '\n';
+            body += '学生割引: ' + (isStudent ? '適用 (20% OFF)' : '適用外') + '\n';
+            body += '動画代理販売割引: ' + (isAgencyDiscount ? '適用 (10% OFF)' : '適用外') + '\n';
+            body += '8時間超過割増: ' + (isOver8Hours ? '適用' : '適用外') + '\n';
+            body += '深夜稼働割増: ' + (isLateNight ? '適用 (交通費実費加算)' : '適用外') + '\n';
+            body += '---------------------------------\n';
+            body += '【人件費・機材オプション】\n';
+            body += 'TD人件費: ' + tdCount + '名\n';
+            body += 'カメラ人件費: ' + cameraManCount + '名\n';
+            body += 'カメラ台数追加: ' + extraCameraCount + '台\n';
+            body += '---------------------------------\n';
+            body += '【固定オプション・印刷】\n';
+            body += optVimeoProxy + '\n';
+            body += optVertical + '\n';
+            body += optMobilePower + '\n';
+            body += optBackupLine + '\n';
+            body += '印刷(カラー): ' + printColor + '枚\n';
+            body += '印刷(モノクロ): ' + printMono + '枚\n';
+            body += '---------------------------------\n';
+            body += '【概算合計金額】\n';
+            body += '小計 (税抜): ' + subTaxExcluded + '\n';
+            body += '消費税: ' + subTaxAmount + '\n';
+            body += 'TOTAL (税込): ' + totalAmount + '\n\n';
+            body += '【貴社/貴殿情報】\n';
+            body += '会社名/団体名: \n';
+            body += 'ご紹介者様名: \n'; // 紹介制のため追加
+            body += 'ご担当者名: \n';
+            body += 'ご連絡先メールアドレス: \n';
+            body += 'ご連絡先電話番号: \n';
+            body += '---------------------------------\n';
+            
+            const mailtoLink = 'mailto:studio@semade.co.jp?subject=' + subject + '&body=' + encodeURIComponent(body);
+            window.location.href = mailtoLink;
+        }
+
+        // 初期値の設定
+        function initializeDates() {
+            const now = new Date();
+            const threeHoursLater = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+            
+            // 年月日を YYYY-MM-DD 形式でフォーマット
+            const dateStr = threeHoursLater.toISOString().split('T')[0];
+            
+            // 時分を HH:MM 形式 (30分単位で切り上げ)
+            let minutes = threeHoursLater.getMinutes();
+            let hours = threeHoursLater.getHours();
+            
+            if (minutes > 30) {
+                minutes = 0;
+                hours += 1;
+            } else if (minutes > 0) {
+                minutes = 30;
+            }
+
+            const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+            
+            document.getElementById('startDate').value = dateStr;
+            document.getElementById('endDate').value = dateStr;
+
+            // 初期利用開始時刻を3時間先に設定
+            document.getElementById('startTime').value = timeStr;
+            
+            // 終了時刻を開始時刻の3時間後に設定（最小利用時間）
+            const endDateTime = new Date(threeHoursLater.getTime() + 3 * 60 * 60 * 1000);
+            let endHours = endDateTime.getHours();
+            let endMinutes = endDateTime.getMinutes();
+
+            if (endMinutes > 30) {
+                endMinutes = 0;
+                endHours += 1;
+            } else if (endMinutes > 0) {
+                endMinutes = 30;
+            }
+            
+            document.getElementById('endTime').value = `${String(endHours).padStart(2, '0')}:${String(endMinutes).padStart(2, '0')}`;
+
+        }
+        
+        // 初回実行
+        document.getElementById('setupHours').value = '1.0';
+        document.getElementById('rehearsalHours').value = '0.5';
+        document.getElementById('mainHours').value = '1.0';
+        document.getElementById('teardownHours').value = '0.5';
+        
+        initializeDates();
+        window.onload = updateQuote;
+    </script>
+</body>
+</html>
