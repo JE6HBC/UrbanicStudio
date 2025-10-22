@@ -13,10 +13,10 @@
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
         }
         .main-gradient {
-            background: linear-gradient(135deg, #0041C2 0%, #0081C9 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         .text-gradient {
-            background: linear-gradient(45deg, #0081C9, #0041C2);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -31,6 +31,43 @@
             border-color: #EF4444; 
             box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 24px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -44,7 +81,7 @@
                 【ベータ版運用中】現在はご紹介者様経由でのご予約のみ承っております。
             </div>
 
-            <a href="#quote" class="bg-[#5BC0F8] hover:bg-[#86E5FF] text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">簡易お見積もりはこちら</a>
+            <a href="#quote" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">簡易お見積もりはこちら</a>
         </div>
     </div>
 
@@ -99,82 +136,102 @@
         <!-- 料金表 -->
         <section id="price" class="mb-20">
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">料金体系</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- 基本価格カード -->
-                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-blue-500">
-                    <h3 class="text-2xl font-bold mb-4">基本スタジオ利用料 (税込)</h3>
-                    <p class="text-4xl font-black text-blue-600 mb-2">¥15,620 <span class="text-lg font-normal text-gray-500">/時間</span></p>
-                    <p class="text-sm text-gray-500 mb-4">※ 3時間より承ります。</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>メインスタジオ＋サブコントロールルーム利用</li>
-                        <li>機材一式レンタル（下記機材リスト参照）</li>
-                        <li>**セッティングサポート**（機材の展開・撤収補助）</li>
-                        <li>有線インカム 4ch 使用可能</li>
+
+            <!-- New 2-column layout for Base vs Options -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+
+                <!-- 基本プランカード -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-t-8 border-indigo-500 flex flex-col">
+                    <h3 class="text-3xl font-bold mb-2 text-center">基本プラン</h3>
+                    <p class="text-center text-gray-500 mb-6">スタジオ利用に必要な全てが含まれます</p>
+                    <div class="text-center mb-6">
+                        <p class="text-4xl font-black text-indigo-600">¥15,620 <span class="text-lg font-normal text-gray-500">/時間 (税込)</span></p>
+                        <p class="text-sm text-gray-500">※ 3時間より承ります。</p>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3 text-gray-800">基本プランに含まれる内容:</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 flex-grow">
+                        <li><strong>スタジオ利用:</strong> メインスタジオ＋サブコントロールルーム</li>
+                        <li><strong>標準機材一式:</strong>
+                            <ul class="list-['-_'] list-inside ml-4 text-sm">
+                                <li>業務用カメラ x2 (固定)</li>
+                                <li>マイク (ガンマイク x2, ワイヤレス x2)</li>
+                                <li>照明機材 (LED・白熱灯)</li>
+                                <li>スイッチャー・配信エンコーダ</li>
+                                <li>その他、下記「機材・設備リスト」記載の標準機材</li>
+                            </ul>
+                        </li>
+                        <li><strong>セッティングサポート:</strong> 機材のセッティング・撤収補助</li>
+                        <li><strong>有線インカム:</strong> 4chまで利用可能</li>
                     </ul>
+                    <p class="mt-6 text-xs text-center text-gray-500 bg-gray-100 p-2 rounded">※ オペレーター人件費は含まれません。お客様ご自身での操作が基本となります。</p>
                 </div>
+
+                <!-- オプションサービスカード -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-t-8 border-blue-500 flex flex-col">
+                    <h3 class="text-3xl font-bold mb-2 text-center">オプションサービス</h3>
+                    <p class="text-center text-gray-500 mb-6">配信のクオリティ向上や特殊対応に</p>
+
+                    <div class="space-y-4 text-gray-700">
+                        <div>
+                            <p class="font-bold">TD人件費 <span class="text-base font-normal text-gray-500">（技術ディレクター）</span></p>
+                            <p class="text-lg">¥11,000 / 時間</p>
+                            <p class="text-sm text-gray-500">※ 高度なスイッチングや配信管理を行います。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">カメラ人件費 <span class="text-base font-normal text-gray-500">（カメラワーク担当）</span></p>
+                            <p class="text-lg">¥8,800 / 時間</p>
+                            <p class="text-sm text-gray-500">※ 演者に合わせたカメラワークが必要な場合は必須です。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">カメラ台数追加 <span class="text-base font-normal text-gray-500">（レンタル）</span></p>
+                            <p class="text-lg">¥11,000 / 台</p>
+                        </div>
+                        <div><p class="font-bold">縦動画対応設定</p><p class="text-lg">¥11,000 / 一回</p></div>
+                        <div><p class="font-bold">主要機器バックアップ電源</p><p class="text-lg">¥5,500 / 一回</p></div>
+                        <div><p class="font-bold">バックアップ回線（4G/5G）</p><p class="text-lg">¥3,300 / 一回</p></div>
+                        <div><p class="font-bold">印刷（カラー/モノクロ）</p><p class="text-lg">¥33 / ¥11 / 枚</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 割引・割増規定 (Moved below) -->
+            <div class="grid md:grid-cols-2 gap-8">
                 <!-- 割引・割増カード -->
-                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-yellow-500">
-                    <h3 class="text-2xl font-bold mb-4">割増・割引規定</h3>
+                <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500">
+                    <h3 class="text-2xl font-bold mb-4">割増規定</h3>
                     <ul class="space-y-4">
                         <li>
                             <p class="font-bold text-gray-700">長時間割増（8時間超過）</p>
                             <p class="text-xl text-yellow-600 font-bold">+ 10%</p>
-                            <p class="text-sm text-gray-500">※ 基本料金・時間オプションに自動適用</p>
+                            <p class="text-sm text-gray-500">※ 基本料金・時間単位オプションに自動適用</p>
                         </li>
                         <li>
                             <p class="font-bold text-gray-700">深夜割増（22:00〜翌7:00）</p>
                             <p class="text-xl text-yellow-600 font-bold">+ 30%</p>
-                            <p class="text-sm text-gray-500">※ 基本料金・時間オプションに適用。スタッフ交通費実費追加。</p>
+                            <p class="text-sm text-gray-500">※ スタッフ交通費実費が別途必要です。</p>
                         </li>
                     </ul>
                 </div>
                 <!-- 学生割引カード -->
-                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-green-500">
+                <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-green-500">
                     <h3 class="text-2xl font-bold mb-4">各種割引プラン</h3>
                     <ul class="space-y-4">
                         <li>
                             <p class="font-bold text-gray-700">ベータ版期間割引</p>
                             <p class="text-xl text-green-600 font-bold">20% OFF</p>
-                            <p class="text-sm text-gray-500">※ 現在強制適用されています。</p>
+                            <p class="text-sm text-gray-500">※ 現在、全てのご利用に自動適用されます。</p>
                         </li>
                         <li>
                             <p class="font-bold text-gray-700">学生割引</p>
                             <p class="text-xl text-green-600 font-bold">20% OFF</p>
-                            <p class="text-sm text-gray-500">※ 学生アドレスでのやり取りが必須。</p>
+                            <p class="text-sm text-gray-500">※ 学生アドレスでのやり取りが必須です。</p>
                         </li>
                         <li>
                             <p class="font-bold text-gray-700">動画代理販売割引</p>
                             <p class="text-xl text-green-600 font-bold">10% OFF</p>
-                            <p class="text-sm text-gray-500">※ 弊社での動画代理販売（編集なし）を条件とします。</p>
+                            <p class="text-sm text-gray-500">※ 弊社での動画代理販売（編集なし）が条件です。</p>
                         </li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- オプションリスト -->
-            <div class="bg-white rounded-xl shadow-xl p-8 mt-12">
-                <h3 class="text-2xl font-bold mb-4 text-blue-600">オプションサービス (全て税込)</h3>
-                <div class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-gray-700">
-                    <div>
-                        <p class="font-bold">TD人件費 <span class="text-base font-normal text-gray-500">（技術ディレクター）</span></p>
-                        <p class="text-lg">¥11,000 / 時間</p>
-                        <p class="text-sm text-gray-500">※ カメラマン不在時は固定カメラでの運用が基本となります。</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">カメラ人件費 <span class="text-base font-normal text-gray-500">（カメラワーク担当）</span></p>
-                        <p class="text-lg">¥8,800 / 時間</p>
-                        <p class="text-sm text-gray-500">※ カメラワークが必要な場合は必須となります。</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">カメラ台数追加 <span class="text-base font-normal text-gray-500">（レンタル）</span></p>
-                        <p class="text-lg">¥11,000 / 台</p>
-                        <p class="text-sm text-gray-500">※ 収録品質に応じたカメラをご用意します。</p>
-                    </div>
-                    <div><p class="font-bold">縦動画対応設定</p><p class="text-lg">¥11,000 / 一回</p></div>
-                    <div><p class="font-bold">主要機器バックアップ電源（モバイル電源）</p><p class="text-lg">¥5,500 / 一回</p></div>
-                    <div><p class="font-bold">バックアップ回線（4G/5Gテザリング）</p><p class="text-lg">¥3,300 / 一回</p></div>
-                    <div><p class="font-bold">印刷（カラー）</p><p class="text-lg">¥33 / 枚</p></div>
-                    <div><p class="font-bold">印刷（モノクロ）</p><p class="text-lg">¥11 / 枚</p></div>
                 </div>
             </div>
         </section>
@@ -183,8 +240,8 @@
         <section id="equipment" class="mb-20">
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">機材・設備リスト</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-600">～スタジオ機材 (メイン)～</h3>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">～スタジオ機材 (メイン)～</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
                         <li>大型返しモニタ</li>
                         <li>業務用カメラ x2 (カメラマン依頼なしの場合は固定)</li>
@@ -195,8 +252,8 @@
                         <li>照明 ディマー（小型白熱灯照明用）</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-600">～調整室機材 (サブコントロールルーム)～</h3>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">～調整室機材 (サブコントロールルーム)～</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
                         <li>中型モニタ（マルチビュー用）</li>
                         <li>スイッチャー（Blackmagic Atem mini pro iso または Blackmagic Atem Production Studio 4K）</li>
@@ -301,7 +358,7 @@
         <!-- 簡易見積書作成ツール -->
         <section id="quote" class="mb-20">
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">簡易お見積もりツール</h2>
-            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 border-t-8 border-blue-500 max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 border-t-8 border-indigo-500 max-w-4xl mx-auto">
                 
                 <form id="quote-form" onsubmit="event.preventDefault(); sendQuoteEmail();">
                     
@@ -329,31 +386,10 @@
                         </div>
                     </div>
 
-                    <!-- 作業時間内訳 -->
-                    <div class="grid md:grid-cols-4 gap-4 mb-3 p-4 bg-blue-50 rounded-lg">
-                        <div>
-                            <label for="setupHours" class="block text-sm font-medium text-gray-700">仕込み時間 (時間)</label>
-                            <input type="number" id="setupHours" min="0" step="0.5" value="1.0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                        <div>
-                            <label for="rehearsalHours" class="block text-sm font-medium text-gray-700">リハーサル時間 (時間)</label>
-                            <input type="number" id="rehearsalHours" min="0" step="0.5" value="0.5" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                        <div>
-                            <label for="mainHours" class="block text-sm font-medium text-gray-700">本番時間 (時間)</label>
-                            <input type="number" id="mainHours" min="0" step="0.5" value="1.0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                        <div>
-                            <label for="teardownHours" class="block text-sm font-medium text-gray-700">撤収時間 (時間)</label>
-                            <input type="number" id="teardownHours" min="0" step="0.5" value="0.5" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                    </div>
-                    
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div>
                             <label for="hours" class="block text-sm font-medium text-gray-700">合計利用時間 (最小3時間)</label>
                             <input type="number" id="hours" min="3" value="3.0" required readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border bg-gray-100 font-bold">
-                            <p id="time-mismatch-warning" class="text-sm text-red-600 mt-1 font-bold" style="display: none;">🚨 エラー：内訳と合計利用時間が一致しません。修正してください。</p>
                             <p class="text-xs text-gray-500 mt-1">※ 自動計算されます。3時間未満の場合は3時間として計上されます。</p>
                         </div>
                         <div>
@@ -482,9 +518,9 @@
                         <div class="flex justify-between text-sm text-gray-600"><span>消費税 (10%):</span><span id="subTaxAmount">¥0</span></div>
                     </div>
 
-                    <div class="flex justify-between items-center bg-blue-100 p-4 rounded-lg mt-4">
+                    <div class="flex justify-between items-center bg-indigo-100 p-4 rounded-lg mt-4">
                         <span class="text-2xl font-bold text-gray-700">TOTAL (税込):</span>
-                        <span id="totalAmount" class="text-4xl font-black text-blue-600">¥0</span>
+                        <span id="totalAmount" class="text-4xl font-black text-indigo-600">¥0</span>
                     </div>
                     <p id="discount-note" class="text-sm text-green-600 mt-2 font-bold" style="display: none;">※ 割引が適用されています。</p>
                     <p id="late-night-note" class="text-sm text-yellow-600 mt-2 font-bold" style="display: none;">※ 深夜稼働割増料金にスタッフ交通費実費が別途加算されます。</p>
@@ -492,7 +528,7 @@
 
                 <!-- メール送信ボタン -->
                 <div class="mt-8">
-                    <button id="sendQuoteButton" onclick="sendQuoteEmail()" class="w-full main-gradient text-white font-bold py-3 rounded-md shadow-lg hover:opacity-90 transition duration-300">
+                    <button id="sendQuoteButton" onclick="sendQuoteEmail()" class="w-full main-gradient text-white font-bold py-3 rounded-md shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105">
                         見積もり内容をメールで送信 (studio@semade.co.jp)
                     </button>
                     <p class="text-xs text-gray-500 mt-2 text-center">※ 概算です。正確な見積もりはメールでお問い合わせください。</p>
@@ -538,13 +574,6 @@
         const STUDENT_DISCOUNT_RATE = 0.20; // 20%
         const AGENCY_DISCOUNT_RATE = 0.10; // 10%
 
-        
-        function checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours) {
-            const sumOfParts = setupHours + rehearsalHours + mainHours + teardownHours;
-            // 浮動小数点誤差を考慮し、微小な差を許容
-            return Math.abs(totalHours - sumOfParts) > 0.01;
-        }
-
         function isStartTimeValid(startDate, startTime) {
             if (!startDate || !startTime) return false;
 
@@ -570,8 +599,22 @@
             // 日時入力値の取得
             const startDate = document.getElementById('startDate').value;
             const startTime = document.getElementById('startTime').value;
+            const endDate = document.getElementById('endDate').value;
+            const endTime = document.getElementById('endTime').value;
             const timeWarningLimit = document.getElementById('time-limit-warning');
+            const sendButton = document.getElementById('sendQuoteButton');
             
+            // --- 0. 合計時間の自動計算 ---
+            let totalHours = 0;
+            if (startDate && startTime && endDate && endTime) {
+                const startDateTime = new Date(`${startDate}T${startTime}`);
+                const endDateTime = new Date(`${endDate}T${endTime}`);
+                if (endDateTime > startDateTime) {
+                    totalHours = (endDateTime - startDateTime) / (1000 * 60 * 60);
+                }
+            }
+            document.getElementById('hours').value = totalHours.toFixed(1);
+
             // --- 0. 時間制限バリデーション ---
             const isTimeValid = isStartTimeValid(startDate, startTime);
             let blockSubmission = false;
@@ -582,32 +625,11 @@
             } else {
                 timeWarningLimit.style.display = 'none';
             }
-            
-            // 作業時間内訳の取得
-            const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
-            const rehearsalHours = parseFloat(document.getElementById('rehearsalHours').value) || 0;
-            const mainHours = parseFloat(document.getElementById('mainHours').value) || 0;
-            const teardownHours = parseFloat(document.getElementById('teardownHours').value) || 0;
-
-            let totalHours = setupHours + rehearsalHours + mainHours + teardownHours;
-            
-            // --- 0. 時間整合性バリデーション ---
-            const isMismatch = checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours);
-            const timeWarningMismatch = document.getElementById('time-mismatch-warning');
-            const sendButton = document.getElementById('sendQuoteButton');
-            
-            if (isMismatch) {
-                timeWarningMismatch.style.display = 'block';
-                blockSubmission = true;
-            } else {
-                timeWarningMismatch.style.display = 'none';
-            }
 
             // 送信ボタンの制御
             if (blockSubmission) {
                 sendButton.disabled = true;
                 sendButton.classList.add('opacity-50');
-                document.getElementById('hours').classList.add('validation-error');
                 // 見積もり表示をクリア
                 document.getElementById('totalAmount').textContent = '要修正';
                 document.getElementById('subTaxExcluded').textContent = '要修正';
@@ -619,14 +641,11 @@
             } else {
                 sendButton.disabled = false;
                 sendButton.classList.remove('opacity-50');
-                document.getElementById('hours').classList.remove('validation-error');
             }
 
 
             // 3時間未満の場合は3時間として計算 
             const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
-            
-            document.getElementById('hours').value = totalHours.toFixed(1); // 合計時間を表示
 
             const isStudent = document.getElementById('isStudent').value === 'true';
             const isAgencyDiscount = document.getElementById('isAgencyDiscount').checked;
@@ -752,100 +771,97 @@
             return activities.join(', ');
         }
         
+        function openModal() {
+            document.getElementById('emailModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('emailModal').style.display = 'none';
+            document.getElementById('copy-success').style.display = 'none'; // Hide success message on close
+        }
+
+        function copyEmailBody() {
+            const emailBody = document.getElementById('emailBody');
+            emailBody.select();
+            document.execCommand('copy');
+
+            const copySuccess = document.getElementById('copy-success');
+            copySuccess.style.display = 'block';
+        }
+
         function sendQuoteEmail() {
             const totalHours = parseFloat(document.getElementById('hours').value) || 0;
-            const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
-            const rehearsalHours = parseFloat(document.getElementById('rehearsalHours').value) || 0;
-            const mainHours = parseFloat(document.getElementById('mainHours').value) || 0;
-            const teardownHours = parseFloat(document.getElementById('teardownHours').value) || 0;
-
             const startDate = document.getElementById('startDate').value;
             const startTime = document.getElementById('startTime').value;
             
-            if (checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours)) {
-                alert('🚨 エラー：仕込み/リハ/本番/撤収の合計時間と「合計利用時間」が一致しません。修正してから送信してください。');
-                return;
-            }
             if (!isStartTimeValid(startDate, startTime)) {
                 alert('🚨 エラー：利用開始日時は現在時刻より3時間以上先を指定してください。');
                 return;
             }
 
-
             const endDate = document.getElementById('endDate').value;
             const endTime = document.getElementById('endTime').value;
-            const hours = document.getElementById('hours').value; // 実時間
-            const hoursForCalculation = totalHours < 3 ? 3 : totalHours; // 計算時間
-
-            const isStudent = document.getElementById('isStudent').value === 'true';
-            const isAgencyDiscount = document.getElementById('isAgencyDiscount').checked;
-            const isOver8Hours = hoursForCalculation > 8;
-            const isLateNight = document.getElementById('isLateNight').checked;
-            
+            const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
             const totalAmount = document.getElementById('totalAmount').textContent;
-            const subTaxExcluded = document.getElementById('subTaxExcluded').textContent;
-            const subTaxAmount = document.getElementById('subTaxAmount').textContent;
             
-            const tdCount = document.getElementById('tdCount').value;
-            const cameraManCount = document.getElementById('cameraManCount').value;
-            const extraCameraCount = document.getElementById('extraCameraCount').value;
+            const subject = '【UrbanicStudio/WEB概算見積】 (' + totalAmount + ')';
             
-            const optVertical = document.getElementById('optVertical').checked ? '縦動画対応(有)' : '縦動画対応(無)';
-            const optMobilePower = document.getElementById('optMobilePower').checked ? 'バックアップ電源(有)' : 'バックアップ電源(無)';
-            const optBackupLine = document.getElementById('optBackupLine').checked ? 'バックアップ回線(有)' : 'バックアップ回線(無)';
-            const optVimeoProxy = document.getElementById('optVimeoProxy').checked ? 'Vimeo代理配信(有)' : 'Vimeo代理配信(無)';
+            let body = '【UrbanicStudioShinbashi 概算見積】\n\n';
+            body += '担当者より折り返しご連絡いたします。\n\n';
+            body += '--- ご利用日時 ---\n';
+            body += `期間: ${startDate} ${startTime} - ${endDate} ${endTime}\n`;
+            body += `合計時間: ${totalHours.toFixed(1)}h (計算時間: ${hoursForCalculation.toFixed(1)}h)\n\n`;
 
-            const printColor = document.getElementById('printColor').value;
-            const printMono = document.getElementById('printMono').value;
-            const customRequest = document.getElementById('customRequest').value || '特になし';
+            body += '--- 実施内容 ---\n';
+            const activities = getSelectedActivities();
+            const platforms = getSelectedPlatforms();
+            body += `内容: ${activities || '未選択'}\n`;
+            body += `プラットフォーム: ${platforms || '未選択'}\n\n`;
 
-            const subject = encodeURIComponent('UrbanicStudioShinbashi 見積もり依頼 (' + totalAmount + ')');
-            let body = '■UrbanicStudioShinbashi 簡易見積もり内容■\n\n';
+            body += '--- スタッフ・機材 ---\n';
+            body += `TD: ${document.getElementById('tdCount').value}名\n`;
+            body += `カメラマン: ${document.getElementById('cameraManCount').value}名\n`;
+            body += `追加カメラ: ${document.getElementById('extraCameraCount').value}台\n\n`;
+
+            body += '--- 割引・割増 ---\n';
+            const discounts = [];
+            if (IS_BETA_MODE) discounts.push('ベータ版');
+            if (document.getElementById('isStudent').value === 'true') discounts.push('学生');
+            if (document.getElementById('isAgencyDiscount').checked) discounts.push('代理販売');
+            body += `割引: ${discounts.length > 0 ? discounts.join(', ') : 'なし'}\n`;
+
+            const surcharges = [];
+            if (hoursForCalculation > 8) surcharges.push('8h超過');
+            if (document.getElementById('isLateNight').checked) surcharges.push('深夜');
+            body += `割増: ${surcharges.length > 0 ? surcharges.join(', ') : 'なし'}\n\n`;
+
+            body += '--- その他 ---\n';
+            const options = [];
+            if (document.getElementById('optVertical').checked) options.push('縦動画');
+            if (document.getElementById('optMobilePower').checked) options.push('バックアップ電源');
+            if (document.getElementById('optBackupLine').checked) options.push('バックアップ回線');
+            if (document.getElementById('optVimeoProxy').checked) options.push('Vimeo代理');
+            body += `固定オプション: ${options.length > 0 ? options.join(', ') : 'なし'}\n`;
+            body += `印刷(カラー/モノクロ): ${document.getElementById('printColor').value}枚 / ${document.getElementById('printMono').value}枚\n`;
+            body += `要望: ${document.getElementById('customRequest').value || '特になし'}\n\n`;
+
+            body += '--- 合計 ---\n';
+            body += `合計金額 (税込): ${totalAmount}\n`;
+            body += `(税抜: ${document.getElementById('subTaxExcluded').textContent}, 消費税: ${document.getElementById('subTaxAmount').textContent})\n\n`;
+
             body += '---------------------------------\n';
-            body += '【希望利用スケジュール】\n';
-            body += '開始日時: ' + startDate + ' ' + startTime + '\n';
-            body += '終了日時: ' + endDate + ' ' + endTime + '\n';
-            body += '合計利用時間: ' + hours + '時間\n';
-            body += '（内訳）仕込み: ' + setupHours + '時間, リハーサル: ' + rehearsalHours + '時間, 本番: ' + mainHours + '時間, 撤収: ' + teardownHours + '時間\n';
-            body += '---------------------------------\n';
-            body += '【制作内容】\n';
-            body += '実施内容: ' + getSelectedActivities() + '\n';
-            body += '配信プラットフォーム: ' + getSelectedPlatforms() + '\n';
-            body += '---------------------------------\n';
-            body += '【料金条件】\n';
-            body += 'ベータ版割引: ' + (IS_BETA_MODE ? '適用 (20% OFF)' : '適用外') + '\n';
-            body += '学生割引: ' + (isStudent ? '適用 (20% OFF)' : '適用外') + '\n';
-            body += '動画代理販売割引: ' + (isAgencyDiscount ? '適用 (10% OFF)' : '適用外') + '\n';
-            body += '8時間超過割増: ' + (isOver8Hours ? '適用' : '適用外') + '\n';
-            body += '深夜稼働割増: ' + (isLateNight ? '適用 (交通費実費加算)' : '適用外') + '\n';
-            body += '---------------------------------\n';
-            body += '【人件費・機材オプション】\n';
-            body += 'TD人件費: ' + tdCount + '名\n';
-            body += 'カメラ人件費: ' + cameraManCount + '名\n';
-            body += 'カメラ台数追加: ' + extraCameraCount + '台\n';
-            body += '---------------------------------\n';
-            body += '【固定オプション・印刷】\n';
-            body += optVimeoProxy + '\n';
-            body += optVertical + '\n';
-            body += optMobilePower + '\n';
-            body += optBackupLine + '\n';
-            body += '印刷(カラー): ' + printColor + '枚\n';
-            body += '印刷(モノクロ): ' + printMono + '枚\n';
-            body += '---------------------------------\n';
-            body += '【概算合計金額】\n';
-            body += '小計 (税抜): ' + subTaxExcluded + '\n';
-            body += '消費税: ' + subTaxAmount + '\n';
-            body += 'TOTAL (税込): ' + totalAmount + '\n\n';
-            body += '【貴社/貴殿情報】\n';
-            body += '会社名/団体名: \n';
-            body += 'ご紹介者様名: \n'; // 紹介制のため追加
-            body += 'ご担当者名: \n';
-            body += 'ご連絡先メールアドレス: \n';
-            body += 'ご連絡先電話番号: \n';
-            body += '---------------------------------\n';
+            body += '【貴社名】\n【ご担当者名】\n【ご連絡先】\n';
+            body += '上記ご記入の上、ご返信ください。\n';
+            body += '---------------------------------';
+
+            document.getElementById('emailBody').value = body;
             
-            const mailtoLink = 'mailto:studio@semade.co.jp?subject=' + subject + '&body=' + encodeURIComponent(body);
-            window.location.href = mailtoLink;
+            const mailtoLink = `mailto:studio@semade.co.jp?subject=${encodeURIComponent(subject)}`;
+            document.getElementById('openMailClientButton').onclick = () => {
+                window.location.href = mailtoLink;
+            };
+
+            openModal();
         }
 
         // 初期値の設定
@@ -892,13 +908,30 @@
         }
         
         // 初回実行
-        document.getElementById('setupHours').value = '1.0';
-        document.getElementById('rehearsalHours').value = '0.5';
-        document.getElementById('mainHours').value = '1.0';
-        document.getElementById('teardownHours').value = '0.5';
-        
         initializeDates();
         window.onload = updateQuote;
     </script>
+
+    <!-- The Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="text-2xl font-bold mb-4">メール内容の確認と送信</h3>
+            <p class="text-sm mb-4">以下の内容で見積もりメールを生成しました。内容をコピーし、メールソフトに貼り付けて送信してください。</p>
+
+            <textarea id="emailBody" readonly class="w-full h-48 p-2 border border-gray-300 rounded-md bg-gray-50 mb-4"></textarea>
+
+            <div class="flex justify-end space-x-4">
+                <button id="copyButton" onclick="copyEmailBody()" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+                    本文をコピー
+                </button>
+                <button id="openMailClientButton" class="main-gradient text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300">
+                    メールソフトを起動
+                </button>
+            </div>
+             <p id="copy-success" class="text-sm text-green-600 mt-2 font-bold" style="display: none;">✅ メール本文をクリップボードにコピーしました。</p>
+        </div>
+    </div>
+
 </body>
 </html>
