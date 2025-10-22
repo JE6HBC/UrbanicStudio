@@ -787,6 +787,12 @@
             body += `合計時間: ${totalHours}h (計算時間: ${hoursForCalculation}h)\n`;
             body += `(仕込み:${setupHours}h, リハ:${rehearsalHours}h, 本番:${mainHours}h, 撤収:${teardownHours}h)\n\n`;
 
+            body += '--- 実施内容 ---\n';
+            const activities = getSelectedActivities();
+            const platforms = getSelectedPlatforms();
+            body += `内容: ${activities || '未選択'}\n`;
+            body += `プラットフォーム: ${platforms || '未選択'}\n\n`;
+
             body += '--- スタッフ・機材 ---\n';
             body += `TD: ${document.getElementById('tdCount').value}名\n`;
             body += `カメラマン: ${document.getElementById('cameraManCount').value}名\n`;
