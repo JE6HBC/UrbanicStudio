@@ -95,19 +95,17 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-2xl font-bold mb-4 text-blue-600">スタジオ図面・レイアウト</h3>
-                    <div id="layout-image" class="w-full h-80 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xl font-bold overflow-hidden">
-                        TBD (PNG/JPEG画像スペース)
-                        <img id="layout-img" src="" onerror="this.style.display='none'; document.getElementById('layout-image').style.display='flex';" style="display:none; width: 100%; height: 100%; object-fit: cover;">
+                    <div id="layout-image" class="w-full h-80 bg-gray-200 rounded-lg overflow-hidden">
+                        <img id="layout-img" src="Gemini_Generated_Image_kzg3ihkzg3ihkzg3.png" alt="スタジオ図面" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
-                    <p class="mt-4 text-sm text-gray-500">※ 画像が指定され次第、ここにスタジオの図面が表示されます。</p>
+                    <p class="mt-4 text-sm text-gray-500">メインスタジオとサブコントロールルームの連携が可能です。</p>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-2xl font-bold mb-4 text-blue-600">スタジオ写真・内観</h3>
-                    <div id="photo-image" class="w-full h-80 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xl font-bold overflow-hidden">
-                        TBD (PNG/JPEG画像スペース)
-                        <img id="photo-img" src="" onerror="this.style.display='none'; document.getElementById('photo-image').style.display='flex';" style="display:none; width: 100%; height: 100%; object-fit: cover;">
+                    <div id="photo-image" class="w-`full h-80 bg-gray-200 rounded-lg overflow-hidden">
+                        <img id="photo-img" src="Gemini_Generated_Image_tj425mtj425mtj42.png" alt="スタジオ内観" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <p class="mt-4 text-sm text-gray-500">※ 画像が指定され次第、ここにスタジオの内観写真が表示されます。</p>
+                    <p class="mt-4 text-sm text-gray-500">グリーンバック、各種照明機材を完備しています。</p>
                 </div>
             </div>
         </section>
@@ -386,31 +384,10 @@
                         </div>
                     </div>
 
-                    <!-- 作業時間内訳 -->
-                    <div class="grid md:grid-cols-4 gap-4 mb-3 p-4 bg-blue-50 rounded-lg">
-                        <div>
-                            <label for="setupHours" class="block text-sm font-medium text-gray-700">仕込み時間 (時間)</label>
-                            <input type="number" id="setupHours" min="0" step="0.5" value="1.0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                        <div>
-                            <label for="rehearsalHours" class="block text-sm font-medium text-gray-700">リハーサル時間 (時間)</label>
-                            <input type="number" id="rehearsalHours" min="0" step="0.5" value="0.5" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                        <div>
-                            <label for="mainHours" class="block text-sm font-medium text-gray-700">本番時間 (時間)</label>
-                            <input type="number" id="mainHours" min="0" step="0.5" value="1.0" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                        <div>
-                            <label for="teardownHours" class="block text-sm font-medium text-gray-700">撤収時間 (時間)</label>
-                            <input type="number" id="teardownHours" min="0" step="0.5" value="0.5" onchange="updateQuote()" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
-                        </div>
-                    </div>
-                    
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div>
                             <label for="hours" class="block text-sm font-medium text-gray-700">合計利用時間 (最小3時間)</label>
                             <input type="number" id="hours" min="3" value="3.0" required readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border bg-gray-100 font-bold">
-                            <p id="time-mismatch-warning" class="text-sm text-red-600 mt-1 font-bold" style="display: none;">🚨 エラー：内訳と合計利用時間が一致しません。修正してください。</p>
                             <p class="text-xs text-gray-500 mt-1">※ 自動計算されます。3時間未満の場合は3時間として計上されます。</p>
                         </div>
                         <div>
@@ -595,13 +572,6 @@
         const STUDENT_DISCOUNT_RATE = 0.20; // 20%
         const AGENCY_DISCOUNT_RATE = 0.10; // 10%
 
-        
-        function checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours) {
-            const sumOfParts = setupHours + rehearsalHours + mainHours + teardownHours;
-            // 浮動小数点誤差を考慮し、微小な差を許容
-            return Math.abs(totalHours - sumOfParts) > 0.01;
-        }
-
         function isStartTimeValid(startDate, startTime) {
             if (!startDate || !startTime) return false;
 
@@ -627,8 +597,22 @@
             // 日時入力値の取得
             const startDate = document.getElementById('startDate').value;
             const startTime = document.getElementById('startTime').value;
+            const endDate = document.getElementById('endDate').value;
+            const endTime = document.getElementById('endTime').value;
             const timeWarningLimit = document.getElementById('time-limit-warning');
+            const sendButton = document.getElementById('sendQuoteButton');
             
+            // --- 0. 合計時間の自動計算 ---
+            let totalHours = 0;
+            if (startDate && startTime && endDate && endTime) {
+                const startDateTime = new Date(`${startDate}T${startTime}`);
+                const endDateTime = new Date(`${endDate}T${endTime}`);
+                if (endDateTime > startDateTime) {
+                    totalHours = (endDateTime - startDateTime) / (1000 * 60 * 60);
+                }
+            }
+            document.getElementById('hours').value = totalHours.toFixed(1);
+
             // --- 0. 時間制限バリデーション ---
             const isTimeValid = isStartTimeValid(startDate, startTime);
             let blockSubmission = false;
@@ -639,32 +623,11 @@
             } else {
                 timeWarningLimit.style.display = 'none';
             }
-            
-            // 作業時間内訳の取得
-            const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
-            const rehearsalHours = parseFloat(document.getElementById('rehearsalHours').value) || 0;
-            const mainHours = parseFloat(document.getElementById('mainHours').value) || 0;
-            const teardownHours = parseFloat(document.getElementById('teardownHours').value) || 0;
-
-            let totalHours = setupHours + rehearsalHours + mainHours + teardownHours;
-            
-            // --- 0. 時間整合性バリデーション ---
-            const isMismatch = checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours);
-            const timeWarningMismatch = document.getElementById('time-mismatch-warning');
-            const sendButton = document.getElementById('sendQuoteButton');
-            
-            if (isMismatch) {
-                timeWarningMismatch.style.display = 'block';
-                blockSubmission = true;
-            } else {
-                timeWarningMismatch.style.display = 'none';
-            }
 
             // 送信ボタンの制御
             if (blockSubmission) {
                 sendButton.disabled = true;
                 sendButton.classList.add('opacity-50');
-                document.getElementById('hours').classList.add('validation-error');
                 // 見積もり表示をクリア
                 document.getElementById('totalAmount').textContent = '要修正';
                 document.getElementById('subTaxExcluded').textContent = '要修正';
@@ -676,14 +639,11 @@
             } else {
                 sendButton.disabled = false;
                 sendButton.classList.remove('opacity-50');
-                document.getElementById('hours').classList.remove('validation-error');
             }
 
 
             // 3時間未満の場合は3時間として計算 
             const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
-            
-            document.getElementById('hours').value = totalHours.toFixed(1); // 合計時間を表示
 
             const isStudent = document.getElementById('isStudent').value === 'true';
             const isAgencyDiscount = document.getElementById('isAgencyDiscount').checked;
@@ -829,18 +789,9 @@
 
         function sendQuoteEmail() {
             const totalHours = parseFloat(document.getElementById('hours').value) || 0;
-            const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
-            const rehearsalHours = parseFloat(document.getElementById('rehearsalHours').value) || 0;
-            const mainHours = parseFloat(document.getElementById('mainHours').value) || 0;
-            const teardownHours = parseFloat(document.getElementById('teardownHours').value) || 0;
-
             const startDate = document.getElementById('startDate').value;
             const startTime = document.getElementById('startTime').value;
             
-            if (checkTimeMismatch(totalHours, setupHours, rehearsalHours, mainHours, teardownHours)) {
-                alert('🚨 エラー：仕込み/リハ/本番/撤収の合計時間と「合計利用時間」が一致しません。修正してから送信してください。');
-                return;
-            }
             if (!isStartTimeValid(startDate, startTime)) {
                 alert('🚨 エラー：利用開始日時は現在時刻より3時間以上先を指定してください。');
                 return;
@@ -857,8 +808,7 @@
             body += '担当者より折り返しご連絡いたします。\n\n';
             body += '--- ご利用日時 ---\n';
             body += `期間: ${startDate} ${startTime} - ${endDate} ${endTime}\n`;
-            body += `合計時間: ${totalHours}h (計算時間: ${hoursForCalculation}h)\n`;
-            body += `(仕込み:${setupHours}h, リハ:${rehearsalHours}h, 本番:${mainHours}h, 撤収:${teardownHours}h)\n\n`;
+            body += `合計時間: ${totalHours.toFixed(1)}h (計算時間: ${hoursForCalculation.toFixed(1)}h)\n\n`;
 
             body += '--- 実施内容 ---\n';
             const activities = getSelectedActivities();
@@ -956,11 +906,6 @@
         }
         
         // 初回実行
-        document.getElementById('setupHours').value = '1.0';
-        document.getElementById('rehearsalHours').value = '0.5';
-        document.getElementById('mainHours').value = '1.0';
-        document.getElementById('teardownHours').value = '0.5';
-        
         initializeDates();
         window.onload = updateQuote;
     </script>
