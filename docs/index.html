@@ -13,10 +13,10 @@
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
         }
         .main-gradient {
-            background: linear-gradient(135deg, #0041C2 0%, #0081C9 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         .text-gradient {
-            background: linear-gradient(45deg, #0081C9, #0041C2);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -44,7 +44,7 @@
                 【ベータ版運用中】現在はご紹介者様経由でのご予約のみ承っております。
             </div>
 
-            <a href="#quote" class="bg-[#5BC0F8] hover:bg-[#86E5FF] text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">簡易お見積もりはこちら</a>
+            <a href="#quote" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">簡易お見積もりはこちら</a>
         </div>
     </div>
 
@@ -101,9 +101,9 @@
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">料金体系</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- 基本価格カード -->
-                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-blue-500">
+                <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-indigo-500">
                     <h3 class="text-2xl font-bold mb-4">基本スタジオ利用料 (税込)</h3>
-                    <p class="text-4xl font-black text-blue-600 mb-2">¥15,620 <span class="text-lg font-normal text-gray-500">/時間</span></p>
+                    <p class="text-4xl font-black text-indigo-600 mb-2">¥15,620 <span class="text-lg font-normal text-gray-500">/時間</span></p>
                     <p class="text-sm text-gray-500 mb-4">※ 3時間より承ります。</p>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
                         <li>メインスタジオ＋サブコントロールルーム利用</li>
@@ -113,7 +113,7 @@
                     </ul>
                 </div>
                 <!-- 割引・割増カード -->
-                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-yellow-500">
+                <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500">
                     <h3 class="text-2xl font-bold mb-4">割増・割引規定</h3>
                     <ul class="space-y-4">
                         <li>
@@ -129,7 +129,7 @@
                     </ul>
                 </div>
                 <!-- 学生割引カード -->
-                <div class="price-card bg-white rounded-xl shadow-xl p-8 border-t-4 border-green-500">
+                <div class="price-card bg-white rounded-xl shadow-lg p-8 border-t-4 border-green-500">
                     <h3 class="text-2xl font-bold mb-4">各種割引プラン</h3>
                     <ul class="space-y-4">
                         <li>
@@ -183,8 +183,8 @@
         <section id="equipment" class="mb-20">
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">機材・設備リスト</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-600">～スタジオ機材 (メイン)～</h3>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">～スタジオ機材 (メイン)～</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
                         <li>大型返しモニタ</li>
                         <li>業務用カメラ x2 (カメラマン依頼なしの場合は固定)</li>
@@ -195,8 +195,8 @@
                         <li>照明 ディマー（小型白熱灯照明用）</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-600">～調整室機材 (サブコントロールルーム)～</h3>
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">～調整室機材 (サブコントロールルーム)～</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
                         <li>中型モニタ（マルチビュー用）</li>
                         <li>スイッチャー（Blackmagic Atem mini pro iso または Blackmagic Atem Production Studio 4K）</li>
@@ -301,7 +301,7 @@
         <!-- 簡易見積書作成ツール -->
         <section id="quote" class="mb-20">
             <h2 class="text-4xl font-extrabold text-center mb-12 text-gradient">簡易お見積もりツール</h2>
-            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 border-t-8 border-blue-500 max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 border-t-8 border-indigo-500 max-w-4xl mx-auto">
                 
                 <form id="quote-form" onsubmit="event.preventDefault(); sendQuoteEmail();">
                     
@@ -482,9 +482,9 @@
                         <div class="flex justify-between text-sm text-gray-600"><span>消費税 (10%):</span><span id="subTaxAmount">¥0</span></div>
                     </div>
 
-                    <div class="flex justify-between items-center bg-blue-100 p-4 rounded-lg mt-4">
+                    <div class="flex justify-between items-center bg-indigo-100 p-4 rounded-lg mt-4">
                         <span class="text-2xl font-bold text-gray-700">TOTAL (税込):</span>
-                        <span id="totalAmount" class="text-4xl font-black text-blue-600">¥0</span>
+                        <span id="totalAmount" class="text-4xl font-black text-indigo-600">¥0</span>
                     </div>
                     <p id="discount-note" class="text-sm text-green-600 mt-2 font-bold" style="display: none;">※ 割引が適用されています。</p>
                     <p id="late-night-note" class="text-sm text-yellow-600 mt-2 font-bold" style="display: none;">※ 深夜稼働割増料金にスタッフ交通費実費が別途加算されます。</p>
@@ -492,7 +492,7 @@
 
                 <!-- メール送信ボタン -->
                 <div class="mt-8">
-                    <button id="sendQuoteButton" onclick="sendQuoteEmail()" class="w-full main-gradient text-white font-bold py-3 rounded-md shadow-lg hover:opacity-90 transition duration-300">
+                    <button id="sendQuoteButton" onclick="sendQuoteEmail()" class="w-full main-gradient text-white font-bold py-3 rounded-md shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105">
                         見積もり内容をメールで送信 (studio@semade.co.jp)
                     </button>
                     <p class="text-xs text-gray-500 mt-2 text-center">※ 概算です。正確な見積もりはメールでお問い合わせください。</p>
@@ -771,80 +771,66 @@
                 return;
             }
 
-
             const endDate = document.getElementById('endDate').value;
             const endTime = document.getElementById('endTime').value;
-            const hours = document.getElementById('hours').value; // 実時間
-            const hoursForCalculation = totalHours < 3 ? 3 : totalHours; // 計算時間
+            const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
 
-            const isStudent = document.getElementById('isStudent').value === 'true';
-            const isAgencyDiscount = document.getElementById('isAgencyDiscount').checked;
-            const isOver8Hours = hoursForCalculation > 8;
-            const isLateNight = document.getElementById('isLateNight').checked;
-            
             const totalAmount = document.getElementById('totalAmount').textContent;
-            const subTaxExcluded = document.getElementById('subTaxExcluded').textContent;
-            const subTaxAmount = document.getElementById('subTaxAmount').textContent;
             
-            const tdCount = document.getElementById('tdCount').value;
-            const cameraManCount = document.getElementById('cameraManCount').value;
-            const extraCameraCount = document.getElementById('extraCameraCount').value;
+            const subject = '【UrbanicStudio/WEB概算見積】 (' + totalAmount + ')';
             
-            const optVertical = document.getElementById('optVertical').checked ? '縦動画対応(有)' : '縦動画対応(無)';
-            const optMobilePower = document.getElementById('optMobilePower').checked ? 'バックアップ電源(有)' : 'バックアップ電源(無)';
-            const optBackupLine = document.getElementById('optBackupLine').checked ? 'バックアップ回線(有)' : 'バックアップ回線(無)';
-            const optVimeoProxy = document.getElementById('optVimeoProxy').checked ? 'Vimeo代理配信(有)' : 'Vimeo代理配信(無)';
+            // --- Concise Email Body ---
+            let body = '【UrbanicStudioShinbashi 概算見積】\n';
+            body += '担当者より折り返しご連絡いたします。\n\n';
+            body += '--- ご利用日時 ---\n';
+            body += `期間: ${startDate} ${startTime} - ${endDate} ${endTime}\n`;
+            body += `合計時間: ${totalHours}h (計算時間: ${hoursForCalculation}h)\n`;
+            body += `(仕込み:${setupHours}h, リハ:${rehearsalHours}h, 本番:${mainHours}h, 撤収:${teardownHours}h)\n\n`;
 
-            const printColor = document.getElementById('printColor').value;
-            const printMono = document.getElementById('printMono').value;
-            const customRequest = document.getElementById('customRequest').value || '特になし';
+            body += '--- スタッフ・機材 ---\n';
+            body += `TD: ${document.getElementById('tdCount').value}名\n`;
+            body += `カメラマン: ${document.getElementById('cameraManCount').value}名\n`;
+            body += `追加カメラ: ${document.getElementById('extraCameraCount').value}台\n\n`;
 
-            const subject = encodeURIComponent('UrbanicStudioShinbashi 見積もり依頼 (' + totalAmount + ')');
-            let body = '■UrbanicStudioShinbashi 簡易見積もり内容■\n\n';
+            body += '--- 割引・割増 ---\n';
+            const discounts = [];
+            if (IS_BETA_MODE) discounts.push('ベータ版');
+            if (document.getElementById('isStudent').value === 'true') discounts.push('学生');
+            if (document.getElementById('isAgencyDiscount').checked) discounts.push('代理販売');
+            body += `割引: ${discounts.length > 0 ? discounts.join(', ') : 'なし'}\n`;
+
+            const surcharges = [];
+            if (hoursForCalculation > 8) surcharges.push('8h超過');
+            if (document.getElementById('isLateNight').checked) surcharges.push('深夜');
+            body += `割増: ${surcharges.length > 0 ? surcharges.join(', ') : 'なし'}\n\n`;
+
+            body += '--- その他 ---\n';
+            const options = [];
+            if (document.getElementById('optVertical').checked) options.push('縦動画');
+            if (document.getElementById('optMobilePower').checked) options.push('バックアップ電源');
+            if (document.getElementById('optBackupLine').checked) options.push('バックアップ回線');
+            if (document.getElementById('optVimeoProxy').checked) options.push('Vimeo代理');
+            body += `固定オプション: ${options.length > 0 ? options.join(', ') : 'なし'}\n`;
+            body += `印刷(カラー/モノクロ): ${document.getElementById('printColor').value}枚 / ${document.getElementById('printMono').value}枚\n`;
+            body += `要望: ${document.getElementById('customRequest').value || '特になし'}\n\n`;
+
+            body += '--- 合計 ---\n';
+            body += `合計金額 (税込): ${totalAmount}\n`;
+            body += `(税抜: ${document.getElementById('subTaxExcluded').textContent}, 消費税: ${document.getElementById('subTaxAmount').textContent})\n\n`;
+
             body += '---------------------------------\n';
-            body += '【希望利用スケジュール】\n';
-            body += '開始日時: ' + startDate + ' ' + startTime + '\n';
-            body += '終了日時: ' + endDate + ' ' + endTime + '\n';
-            body += '合計利用時間: ' + hours + '時間\n';
-            body += '（内訳）仕込み: ' + setupHours + '時間, リハーサル: ' + rehearsalHours + '時間, 本番: ' + mainHours + '時間, 撤収: ' + teardownHours + '時間\n';
-            body += '---------------------------------\n';
-            body += '【制作内容】\n';
-            body += '実施内容: ' + getSelectedActivities() + '\n';
-            body += '配信プラットフォーム: ' + getSelectedPlatforms() + '\n';
-            body += '---------------------------------\n';
-            body += '【料金条件】\n';
-            body += 'ベータ版割引: ' + (IS_BETA_MODE ? '適用 (20% OFF)' : '適用外') + '\n';
-            body += '学生割引: ' + (isStudent ? '適用 (20% OFF)' : '適用外') + '\n';
-            body += '動画代理販売割引: ' + (isAgencyDiscount ? '適用 (10% OFF)' : '適用外') + '\n';
-            body += '8時間超過割増: ' + (isOver8Hours ? '適用' : '適用外') + '\n';
-            body += '深夜稼働割増: ' + (isLateNight ? '適用 (交通費実費加算)' : '適用外') + '\n';
-            body += '---------------------------------\n';
-            body += '【人件費・機材オプション】\n';
-            body += 'TD人件費: ' + tdCount + '名\n';
-            body += 'カメラ人件費: ' + cameraManCount + '名\n';
-            body += 'カメラ台数追加: ' + extraCameraCount + '台\n';
-            body += '---------------------------------\n';
-            body += '【固定オプション・印刷】\n';
-            body += optVimeoProxy + '\n';
-            body += optVertical + '\n';
-            body += optMobilePower + '\n';
-            body += optBackupLine + '\n';
-            body += '印刷(カラー): ' + printColor + '枚\n';
-            body += '印刷(モノクロ): ' + printMono + '枚\n';
-            body += '---------------------------------\n';
-            body += '【概算合計金額】\n';
-            body += '小計 (税抜): ' + subTaxExcluded + '\n';
-            body += '消費税: ' + subTaxAmount + '\n';
-            body += 'TOTAL (税込): ' + totalAmount + '\n\n';
-            body += '【貴社/貴殿情報】\n';
-            body += '会社名/団体名: \n';
-            body += 'ご紹介者様名: \n'; // 紹介制のため追加
-            body += 'ご担当者名: \n';
-            body += 'ご連絡先メールアドレス: \n';
-            body += 'ご連絡先電話番号: \n';
-            body += '---------------------------------\n';
+            body += '【貴社名】\n【ご担当者名】\n【ご連絡先】\n';
+            body += '上記ご記入の上、ご返信ください。\n';
+            body += '---------------------------------';
+
+            // Use encodeURIComponent for proper encoding
+            const mailtoLink = `mailto:studio@semade.co.jp?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
-            const mailtoLink = 'mailto:studio@semade.co.jp?subject=' + subject + '&body=' + encodeURIComponent(body);
+            // For debugging length issues
+            if (mailtoLink.length > 2000) {
+                 console.warn("Mailto link is very long and might fail in some clients:", mailtoLink.length);
+            }
+
             window.location.href = mailtoLink;
         }
 
