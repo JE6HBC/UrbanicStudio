@@ -31,6 +31,43 @@
             border-color: #EF4444; 
             box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 24px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -752,6 +789,24 @@
             return activities.join(', ');
         }
         
+        function openModal() {
+            document.getElementById('emailModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('emailModal').style.display = 'none';
+            document.getElementById('copy-success').style.display = 'none'; // Hide success message on close
+        }
+
+        function copyEmailBody() {
+            const emailBody = document.getElementById('emailBody');
+            emailBody.select();
+            document.execCommand('copy');
+
+            const copySuccess = document.getElementById('copy-success');
+            copySuccess.style.display = 'block';
+        }
+
         function sendQuoteEmail() {
             const totalHours = parseFloat(document.getElementById('hours').value) || 0;
             const setupHours = parseFloat(document.getElementById('setupHours').value) || 0;
@@ -774,13 +829,11 @@
             const endDate = document.getElementById('endDate').value;
             const endTime = document.getElementById('endTime').value;
             const hoursForCalculation = totalHours < 3 ? 3 : totalHours;
-
             const totalAmount = document.getElementById('totalAmount').textContent;
             
             const subject = '【UrbanicStudio/WEB概算見積】 (' + totalAmount + ')';
             
-            // --- Concise Email Body ---
-            let body = '【UrbanicStudioShinbashi 概算見積】\n';
+            let body = '【UrbanicStudioShinbashi 概算見積】\n\n';
             body += '担当者より折り返しご連絡いたします。\n\n';
             body += '--- ご利用日時 ---\n';
             body += `期間: ${startDate} ${startTime} - ${endDate} ${endTime}\n`;
@@ -829,15 +882,14 @@
             body += '上記ご記入の上、ご返信ください。\n';
             body += '---------------------------------';
 
-            // Use encodeURIComponent for proper encoding
-            const mailtoLink = `mailto:studio@semade.co.jp?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            document.getElementById('emailBody').value = body;
             
-            // For debugging length issues
-            if (mailtoLink.length > 2000) {
-                 console.warn("Mailto link is very long and might fail in some clients:", mailtoLink.length);
-            }
+            const mailtoLink = `mailto:studio@semade.co.jp?subject=${encodeURIComponent(subject)}`;
+            document.getElementById('openMailClientButton').onclick = () => {
+                window.location.href = mailtoLink;
+            };
 
-            window.location.href = mailtoLink;
+            openModal();
         }
 
         // 初期値の設定
@@ -892,5 +944,27 @@
         initializeDates();
         window.onload = updateQuote;
     </script>
+
+    <!-- The Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="text-2xl font-bold mb-4">メール内容の確認と送信</h3>
+            <p class="text-sm mb-4">以下の内容で見積もりメールを生成しました。内容をコピーし、メールソフトに貼り付けて送信してください。</p>
+
+            <textarea id="emailBody" readonly class="w-full h-48 p-2 border border-gray-300 rounded-md bg-gray-50 mb-4"></textarea>
+
+            <div class="flex justify-end space-x-4">
+                <button id="copyButton" onclick="copyEmailBody()" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+                    本文をコピー
+                </button>
+                <button id="openMailClientButton" class="main-gradient text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300">
+                    メールソフトを起動
+                </button>
+            </div>
+             <p id="copy-success" class="text-sm text-green-600 mt-2 font-bold" style="display: none;">✅ メール本文をクリップボードにコピーしました。</p>
+        </div>
+    </div>
+
 </body>
 </html>
